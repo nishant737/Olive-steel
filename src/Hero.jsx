@@ -93,86 +93,18 @@ function Hero() {
           </div>
 
           <p className="hero-desc">{STATIC_DESC}</p>
+          <a href="#contact" className="hero-btn">Get a Quote</a>
         </div>
 
-        {/* ── Right: video circle with decorative layer + corner cards ── */}
+        {/* ── Right: large olive circle bg + overlapping video circle ── */}
         <div className="hero-right">
+
+          {/* Large solid olive circle — bleeds off the right edge */}
+          <div className="circle-bg" />
+
+          {/* Video circle straddling the left edge of circle-bg */}
           <div className="circle-wrapper">
 
-            {/*
-              Decorative SVG — 600×600 viewBox centred on the video-circle.
-              At the design midpoint the circle occupies r≈200 units,
-              so all decorations are placed outside that radius.
-            */}
-            <svg
-              className="circle-deco"
-              viewBox="0 0 600 600"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <defs>
-                {/* Dot grid used for the two corner patches */}
-                <pattern id="heroDots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
-                  <circle cx="1.5" cy="1.5" r="1.3" fill="rgba(107,124,58,0.28)" />
-                </pattern>
-              </defs>
-
-              {/* ── Dot-grid patches (top-right & bottom-left corners) ── */}
-              <rect x="432" y="28"  width="130" height="130" fill="url(#heroDots)" opacity="0.75" />
-              <rect x="38"  y="442" width="130" height="130" fill="url(#heroDots)" opacity="0.75" />
-
-              {/* ── Slow-rotating outer dashed ring (olive) ── */}
-              <circle
-                cx="300" cy="300" r="272"
-                stroke="rgba(107,124,58,0.16)" strokeWidth="1.2"
-                strokeDasharray="5 18"
-                className="deco-ring-spin"
-              />
-
-              {/* ── Static secondary ring for depth ── */}
-              <circle
-                cx="300" cy="300" r="246"
-                stroke="rgba(17,19,16,0.055)" strokeWidth="0.8"
-              />
-
-              {/* ── Small square markers at cardinal points on r=246 ── */}
-              {/* right */}
-              <rect x="541" y="294" width="10" height="10" rx="1.5" fill="rgba(107,124,58,0.32)" />
-              {/* top */}
-              <rect x="294" y="49"  width="10" height="10" rx="1.5" fill="rgba(107,124,58,0.32)" />
-              {/* left */}
-              <rect x="49"  y="294" width="10" height="10" rx="1.5" fill="rgba(107,124,58,0.32)" />
-              {/* bottom */}
-              <rect x="294" y="541" width="10" height="10" rx="1.5" fill="rgba(107,124,58,0.32)" />
-
-              {/* ── L-bracket corner accents (top-right & bottom-left) ── */}
-              <path d="M 490,74 L 528,74 L 528,112"
-                stroke="rgba(17,19,16,0.13)" strokeWidth="1.6"
-                strokeLinecap="square"
-              />
-              <path d="M 110,526 L 72,526 L 72,488"
-                stroke="rgba(17,19,16,0.13)" strokeWidth="1.6"
-                strokeLinecap="square"
-              />
-
-              {/* ── Crosshair markers (top-left & bottom-right) ── */}
-              <line x1="65" y1="82"  x2="86"  y2="82"  stroke="rgba(17,19,16,0.14)" strokeWidth="1.4" />
-              <line x1="75" y1="72"  x2="75"  y2="93"  stroke="rgba(17,19,16,0.14)" strokeWidth="1.4" />
-
-              <line x1="514" y1="518" x2="535" y2="518" stroke="rgba(17,19,16,0.14)" strokeWidth="1.4" />
-              <line x1="524" y1="508" x2="524" y2="529" stroke="rgba(17,19,16,0.14)" strokeWidth="1.4" />
-
-              {/* ── Soft partial arc strokes (suggest motion, top-left & bottom-right) ── */}
-              <path d="M 148,96 A 215,215 0 0 1 96,148"
-                stroke="rgba(107,124,58,0.12)" strokeWidth="1" strokeLinecap="round"
-              />
-              <path d="M 452,504 A 215,215 0 0 1 504,452"
-                stroke="rgba(107,124,58,0.12)" strokeWidth="1" strokeLinecap="round"
-              />
-            </svg>
-
-            {/* Top-right corner card */}
             <div className="circle-card circle-card--tr">
               <span className="circle-card__value">15+</span>
               <span className="circle-card__label">Years of Excellence</span>
@@ -189,7 +121,6 @@ function Hero() {
               />
             </div>
 
-            {/* Bottom-left corner card */}
             <div className="circle-card circle-card--bl">
               <span className="circle-card__value">500+</span>
               <span className="circle-card__label">Projects Delivered</span>
