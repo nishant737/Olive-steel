@@ -46,10 +46,11 @@ function Hero() {
       <nav className="nav">
         <img src={logo} alt="Olive Steel" className="nav-logo" />
         <ul className="nav-links">
-          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#clients">Clients</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
         <a href="#contact" className="nav-cta">Get a Quote</a>
 
@@ -64,9 +65,11 @@ function Hero() {
 
         {/* Mobile drawer */}
         <div className={`nav-mobile-menu${menuOpen ? ' open' : ''}`}>
-          <a href="#products" onClick={() => setMenuOpen(false)}>Products</a>
+          <a href="#about"    onClick={() => setMenuOpen(false)}>About</a>
           <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
           <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
+          <a href="#clients"  onClick={() => setMenuOpen(false)}>Clients</a>
+          <a href="#faq"      onClick={() => setMenuOpen(false)}>FAQ</a>
           <a href="#contact" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>Get a Quote</a>
         </div>
       </nav>
