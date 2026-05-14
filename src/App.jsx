@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
 import SplashScreen from './SplashScreen'
+import Cursor from './Cursor'
 import Navbar from './Navbar'
 import Hero from './Hero'
 import About from './About'
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+      <Cursor />
       {showSplash && <SplashScreen onDone={handleSplashDone} />}
       <Navbar />
       <Hero />

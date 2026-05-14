@@ -243,8 +243,53 @@
 }
 
 @media (max-width: 768px) {
-  .ctc-section { flex-direction: column; padding: 72px 24px; gap: 40px; }
-  .ctc-left { flex: unset; width: 100%; }
-  .ctc-right { padding: 32px 24px; }
-  .ctc-row { flex-direction: column; gap: 20px; }
+  .ctc-section {
+    flex-direction: column;
+    padding: 56px 16px 64px;
+    gap: 36px;
+  }
+
+  .ctc-left {
+    flex: unset;
+    width: 100%;
+  }
+
+  .ctc-heading { font-size: 2rem; }
+  .ctc-desc    { margin-bottom: 28px; }
+
+  .ctc-details { gap: 12px; }
+
+  .ctc-detail-item {
+    padding: 12px 16px;
+    border-radius: 12px;
+  }
+
+  .ctc-right {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 24px 20px 28px;
+    border-radius: 18px;
+  }
+
+  .ctc-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ctc-form { gap: 16px; }
+
+  .ctc-field input,
+  .ctc-field textarea {
+    font-size: 1rem;
+    padding: 13px 14px;
+    border-radius: 10px;
+  }
+
+  .ctc-submit {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: 12px;
+    align-self: stretch;
+  }
 }

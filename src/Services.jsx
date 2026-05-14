@@ -55,11 +55,11 @@ export default function Services() {
       if (!el) return
       if (i === idx) {
         gsap.fromTo(el,
-          { opacity: 0, scale: 1.05 },
-          { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out' }
+          { opacity: 0, scale: 1.03 },
+          { opacity: 1, scale: 1, duration: 0.22, ease: 'power2.out' }
         )
       } else {
-        gsap.to(el, { opacity: 0, scale: 1.03, duration: 0.2, ease: 'power2.in' })
+        gsap.to(el, { opacity: 0, scale: 1.02, duration: 0.15, ease: 'power2.in' })
       }
     })
 
@@ -76,12 +76,13 @@ export default function Services() {
       })
       rowRefs.current[0]?.classList.add('svc-row--active')
 
-      // ScrollTrigger per segment
+      // ScrollTrigger per segment — spacer is 1.5vh so each step = spacer/N
+      const STEP = () => wrapperRef.current.offsetHeight / (N + 1)
       SERVICES.forEach((_, i) => {
         ScrollTrigger.create({
           trigger: wrapperRef.current,
-          start: () => `top+=${(i / N) * wrapperRef.current.offsetHeight} top`,
-          end:   () => `top+=${((i + 1) / N) * wrapperRef.current.offsetHeight} top`,
+          start: () => `top+=${i * STEP()} top`,
+          end:   () => `top+=${(i + 1) * STEP()} top`,
           onEnter:     () => activateItem(i),
           onEnterBack: () => activateItem(i),
         })
@@ -125,6 +126,13 @@ export default function Services() {
           <div className="svc-list">
             {SERVICES.map((s, i) => (
               <div key={s.id} ref={el => rowRefs.current[i] = el} className="svc-row">
+                {/* Image shown only on mobile, above each row */}
+                <div className="svc-row__mob-img">
+                  <img src={s.img} alt={s.title} />
+                  <span className="svc-img-counter">
+                    {String(i + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}
+                  </span>
+                </div>
                 <span className="svc-row__num">{s.id}</span>
                 <div className="svc-row__content">
                   <span className="svc-row__title">

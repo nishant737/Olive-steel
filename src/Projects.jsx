@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import './Projects.css'
 
 const PROJECTS = [
@@ -47,83 +46,48 @@ const PROJECTS = [
   },
 ]
 
-const CARD_W = 420
-const GAP    = 24
-const STEP   = CARD_W + GAP
-const TOTAL  = PROJECTS.length
-
-// Triple-clone so arrows always have cards ahead/behind
-const ITEMS  = [...PROJECTS, ...PROJECTS, ...PROJECTS]
+const N = PROJECTS.length
 
 export default function Projects() {
-  const trackRef   = useRef(null)
-  const tweenRef   = useRef(null)
-  const posRef     = useRef(0)           // current x offset
   const [active, setActive] = useState(0)
+  const [animating, setAnimating] = useState(false)
+  const timerRef = useRef(null)
+  const pausedRef = useRef(false)
 
-  // Compute active dot from current position
-  function updateDot(x) {
-    const idx = (Math.round(-x / STEP) % TOTAL + TOTAL) % TOTAL
-    setActive(idx)
-  }
+  const goTo = useCallback((idx) => {
+    if (animating) return
+    setAnimating(true)
+    setActive((idx + N) % N)
+    setTimeout(() => setAnimating(false), 600)
+  }, [animating])
 
-  // Seamless infinite auto-scroll
-  function startLoop() {
-    if (tweenRef.current) tweenRef.current.kill()
-    const startX   = posRef.current
-    const loopDist = STEP * TOTAL          // one full set width
-    const duration = (loopDist / STEP) * 4 // 4 s per card
+  const next = useCallback(() => goTo(active + 1), [active, goTo])
+  const prev = useCallback(() => goTo(active - 1), [active, goTo])
 
-    tweenRef.current = gsap.to(posRef, {
-      current: startX - loopDist,
-      duration,
-      ease: 'none',
-      repeat: -1,
-      modifiers: {
-        current: v => {
-          // keep position within [-loopDist, 0] window
-          let val = parseFloat(v)
-          val = ((val % -loopDist) - loopDist) % -loopDist
-          return val
-        },
-      },
-      onUpdate: () => {
-        gsap.set(trackRef.current, { x: posRef.current })
-        updateDot(posRef.current)
-      },
-    })
-  }
-
-  function pause()  { tweenRef.current?.pause() }
-  function resume() { tweenRef.current?.play()  }
-
-  function jump(dir) {
-    pause()
-    const target = posRef.current + dir * -STEP
-    gsap.to(posRef, {
-      current: target,
-      duration: 0.32,
-      ease: 'expo.out',
-      onUpdate: () => {
-        gsap.set(trackRef.current, { x: posRef.current })
-        updateDot(posRef.current)
-      },
-      onComplete: () => {
-        posRef.current = ((posRef.current % (-STEP * TOTAL)) - STEP * TOTAL) % (-STEP * TOTAL)
-        gsap.set(trackRef.current, { x: posRef.current })
-        startLoop()
-      },
-    })
-  }
+  const startTimer = useCallback(() => {
+    clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => {
+      if (!pausedRef.current) {
+        setAnimating(false)
+        setActive(a => (a + 1) % N)
+      }
+    }, 3000)
+  }, [])
 
   useEffect(() => {
-    // start mid-set so left arrow always works
-    posRef.current = -STEP * TOTAL
-    gsap.set(trackRef.current, { x: posRef.current })
-    startLoop()
+    startTimer()
+    return () => clearInterval(timerRef.current)
+  }, [startTimer])
 
-    return () => tweenRef.current?.kill()
-  }, [])
+  function getPos(i) {
+    const diff = ((i - active) % N + N) % N
+    if (diff === 0) return 'active'
+    if (diff === 1 || diff === N - (N - 1)) return 'next'
+    if (diff === N - 1) return 'prev'
+    if (diff === 2) return 'far-next'
+    if (diff === N - 2) return 'far-prev'
+    return 'hidden'
+  }
 
   return (
     <section className="proj-section" id="projects">
@@ -132,92 +96,61 @@ export default function Projects() {
       <div className="proj-header">
         <div className="proj-badge">
           <span className="proj-badge-dot" />
-          Projects
+          Our Work
         </div>
-        <h2 className="proj-heading">Our <em>Work</em></h2>
-        <p className="proj-sub">Built with Precision</p>
+        <h2 className="proj-heading">Featured <em>Projects</em></h2>
+        <p className="proj-sub">Built with precision, delivered on time.</p>
       </div>
 
-      {/* Carousel row */}
+      {/* Stack carousel */}
       <div
-        className="proj-carousel-row"
-        onMouseEnter={pause}
-        onMouseLeave={resume}
+        className="proj-stage"
+        onMouseEnter={() => { pausedRef.current = true }}
+        onMouseLeave={() => { pausedRef.current = false }}
       >
-        {/* Left arrow */}
-        <button className="proj-arrow proj-arrow--left" onClick={() => jump(-1)} aria-label="Previous">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-        </button>
+        {PROJECTS.map((p, i) => {
+          const pos = getPos(i)
+          return (
+            <div
+              key={i}
+              className={`proj-card proj-card--${pos}`}
+              onClick={() => pos !== 'active' && goTo(i)}
+            >
+              <img src={p.img} alt={p.title} className="proj-card-img" />
 
-        {/* Track */}
-        <div className="proj-viewport">
-          <div className="proj-track" ref={trackRef}>
-            {ITEMS.map((p, i) => (
-              <div key={i} className="proj-card">
-                <img src={p.img} alt={p.title} className="proj-card-img" />
-
+              <div className="proj-card-glass">
                 <div className="proj-pills">
-                  <span className="proj-pill">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    </svg>
-                    {p.style}
-                  </span>
-                  <span className="proj-pill">
+                  <span className="proj-pill">{p.style}</span>
+                  <span className="proj-pill proj-pill--time">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                     </svg>
                     {p.duration}
                   </span>
                 </div>
-
-                <div className="proj-card-overlay">
-                  <h3 className="proj-card-title">{p.title}</h3>
-                  <p className="proj-card-desc">{p.desc}</p>
-                </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Right arrow */}
-        <button className="proj-arrow proj-arrow--right" onClick={() => jump(1)} aria-label="Next">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="9 18 15 12 9 6" />
-          </svg>
-        </button>
+              <div className="proj-card-info">
+                <h3 className="proj-card-title">{p.title}</h3>
+                <p className="proj-card-desc">{p.desc}</p>
+              </div>
+            </div>
+          )
+        })}
+
       </div>
 
-      {/* Dot indicators */}
+      {/* Dots */}
       <div className="proj-dots">
         {PROJECTS.map((_, i) => (
           <button
             key={i}
             className={`proj-dot${i === active ? ' proj-dot--active' : ''}`}
-            onClick={() => {
-              pause()
-              const target = -(STEP * TOTAL + STEP * i)
-              gsap.to(posRef, {
-                current: target,
-                duration: 0.38,
-                ease: 'expo.out',
-                onUpdate: () => {
-                  gsap.set(trackRef.current, { x: posRef.current })
-                  updateDot(posRef.current)
-                },
-                onComplete: () => {
-                  posRef.current = target
-                  startLoop()
-                },
-              })
-            }}
-            aria-label={`Go to project ${i + 1}`}
+            onClick={() => goTo(i)}
+            aria-label={`Project ${i + 1}`}
           />
         ))}
       </div>
-
 
     </section>
   )

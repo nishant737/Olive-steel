@@ -13,45 +13,34 @@ import craveImg from './assets/crave.jpeg'
 import ratnaImg from './assets/ratna.png'
 import rnsImg from './assets/rns-one.png'
 import meilImg from './assets/meil.jpeg'
-
-
 import './Clients.css'
 
 const CLIENTS = [
-  { name: 'Nitte University', abbr: 'TH', img: nitteImg },
-  { name: 'Alvas Education Foundation ',  abbr: 'ITC', img: alvaImg},
-  { name: 'ONGC',    abbr: 'OR', img: ONGCImg},
-  { name: 'Kiol Limited',  abbr: 'LH', img: kiolImg},
-  { name: 'KMC Hospital',   abbr: 'CCD', img: kmcImg},
-  { name: 'The Ocean Pearl', abbr: 'MH', img: oceanImg},
-  { name: 'Taj',     abbr: 'BG', img: tajImg},
-  { name: 'Madhuvans',  abbr: 'PE', img:madhuvanImg },
-  { name: 'Ideal Ice Cream',   abbr: 'MR', img: idealImg },
-  { name: 'Ullas Ice Cream',  abbr: 'AP', img: ullasImg },
-  { name: 'Meil',  abbr: 'AP', img: meilImg },
-  { name: 'Crave',  abbr: 'AP', img: craveImg },
-  { name: 'AJ Hospitals',  abbr: 'AP', img: ajImg },
-  { name: 'Sagar Ratna',  abbr: 'AP', img: ratnaImg },
-  { name: 'RNS One',  abbr: 'AP', img: rnsImg },
+  { name: 'Nitte University',           img: nitteImg   },
+  { name: 'Alvas Education Foundation', img: alvaImg    },
+  { name: 'ONGC',                        img: ONGCImg    },
+  { name: 'Kiol Limited',               img: kiolImg    },
+  { name: 'KMC Hospital',               img: kmcImg     },
+  { name: 'The Ocean Pearl',            img: oceanImg   },
+  { name: 'Taj',                         img: tajImg     },
+  { name: 'Madhuvans',                  img: madhuvanImg},
+  { name: 'Ideal Ice Cream',            img: idealImg   },
+  { name: 'Ullas Ice Cream',            img: ullasImg   },
+  { name: 'Meil',                        img: meilImg    },
+  { name: 'Crave',                       img: craveImg   },
+  { name: 'AJ Hospitals',               img: ajImg      },
+  { name: 'Sagar Ratna',                img: ratnaImg   },
+  { name: 'RNS One',                    img: rnsImg     },
 ]
 
-const STATS = [
-  { value: '500+', label: 'Projects Delivered' },
-  { value: '200+', label: 'Happy Clients'       },
-  { value: '15+',  label: 'Years of Experience' },
-  { value: '99%',  label: 'Client Satisfaction' },
-]
-
-// Triple for seamless loop
-const ROW1 = [...CLIENTS, ...CLIENTS, ...CLIENTS]
-const ROW2 = [...CLIENTS].reverse()
-const ROW2x = [...ROW2, ...ROW2, ...ROW2]
+const ROW1  = [...CLIENTS,          ...CLIENTS,          ...CLIENTS         ]
+const ROW2  = [...[...CLIENTS].reverse(), ...[...CLIENTS].reverse(), ...[...CLIENTS].reverse()]
+const ROW3  = [...CLIENTS.slice(5), ...CLIENTS, ...CLIENTS, ...CLIENTS.slice(0,5)]
 
 export default function Clients() {
   return (
     <section className="cli-section" id="clients">
 
-      {/* Header */}
       <div className="cli-header">
         <div className="cli-badge">
           <span className="cli-badge-dot" />
@@ -61,50 +50,35 @@ export default function Clients() {
         <p className="cli-sub">Partnering with industry leaders across hospitality, healthcare, and beyond.</p>
       </div>
 
-      {/* Stats */}
-      <div className="cli-stats">
-        {STATS.map((s, i) => (
-          <div key={s.label} className="cli-stat">
-            <span className="cli-stat__value">{s.value}</span>
-            <span className="cli-stat__label">{s.label}</span>
-            {i < STATS.length - 1 && <div className="cli-stat-divider" />}
-          </div>
-        ))}
-      </div>
+      {/* Diagonal marquee area */}
+      <div className="cli-diagonal-wrap">
+        <div className="cli-diagonal-inner">
 
-      {/* Marquee rows — full bleed, no horizontal padding */}
-      <div className="cli-marquee-section">
-
-        {/* Row 1 — left */}
-        <div className="cli-marquee-wrap">
-          <div className="cli-marquee cli-marquee--fwd">
+          <div className="cli-row cli-row--fwd">
             {ROW1.map((c, i) => (
-              <div key={i} className="cli-card">
-                {c.img
-                  ? <img src={c.img} alt={c.name} className="cli-card__logo-img" />
-                  : <span className="cli-card__abbr">{c.abbr}</span>
-                }
-                <span className="cli-card__name">{c.name}</span>
+              <div key={i} className="cli-logo">
+                <img src={c.img} alt={c.name} />
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Row 2 — right */}
-        <div className="cli-marquee-wrap">
-          <div className="cli-marquee cli-marquee--rev">
-            {ROW2x.map((c, i) => (
-              <div key={i} className="cli-card">
-                {c.img
-                  ? <img src={c.img} alt={c.name} className="cli-card__logo-img" />
-                  : <span className="cli-card__abbr">{c.abbr}</span>
-                }
-                <span className="cli-card__name">{c.name}</span>
+          <div className="cli-row cli-row--rev">
+            {ROW2.map((c, i) => (
+              <div key={i} className="cli-logo">
+                <img src={c.img} alt={c.name} />
               </div>
             ))}
           </div>
-        </div>
 
+          <div className="cli-row cli-row--fwd cli-row--slow">
+            {ROW3.map((c, i) => (
+              <div key={i} className="cli-logo">
+                <img src={c.img} alt={c.name} />
+              </div>
+            ))}
+          </div>
+
+        </div>
       </div>
 
     </section>
