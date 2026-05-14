@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import logo from './assets/finallogoolive.png'
-import heroBg from './assets/myhero.jpg'
+import heroBg from './assets/nero.jpeg'
 import './Hero.css'
 
 const HEADINGS = [
