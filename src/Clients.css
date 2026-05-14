@@ -67,7 +67,7 @@
 .cli-diagonal-wrap {
   width: 100%;
   overflow: hidden;
-  height: 420px;
+  height: 280px;
   position: relative;
   /* Fade all 4 edges so cutoffs are invisible */
   mask-image: linear-gradient(

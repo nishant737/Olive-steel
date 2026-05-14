@@ -33,9 +33,8 @@ const CLIENTS = [
   { name: 'RNS One',                    img: rnsImg     },
 ]
 
-const ROW1  = [...CLIENTS,          ...CLIENTS,          ...CLIENTS         ]
-const ROW2  = [...[...CLIENTS].reverse(), ...[...CLIENTS].reverse(), ...[...CLIENTS].reverse()]
-const ROW3  = [...CLIENTS.slice(5), ...CLIENTS, ...CLIENTS, ...CLIENTS.slice(0,5)]
+const ROW1 = [...CLIENTS, ...CLIENTS, ...CLIENTS]
+const ROW2 = [...[...CLIENTS].reverse(), ...[...CLIENTS].reverse(), ...[...CLIENTS].reverse()]
 
 export default function Clients() {
   return (
@@ -70,13 +69,6 @@ export default function Clients() {
             ))}
           </div>
 
-          <div className="cli-row cli-row--fwd cli-row--slow">
-            {ROW3.map((c, i) => (
-              <div key={i} className="cli-logo">
-                <img src={c.img} alt={c.name} />
-              </div>
-            ))}
-          </div>
 
         </div>
       </div>
