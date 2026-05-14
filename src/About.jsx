@@ -50,8 +50,6 @@ function Counter({ end, suffix, visible }) {
 export default function About() {
   const [sectionRef, visible] = useInView(0.2)
 
-  const headingLines = ['Crafting Steel', 'Into ']
-
   return (
     <section className="about-section" id="about" ref={sectionRef}>
 

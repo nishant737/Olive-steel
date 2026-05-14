@@ -1,7 +1,7 @@
 /* ── Contact / Get in Touch ── */
 .ctc-section {
   background: var(--beige, #E0DCCC);
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+
   padding: 100px 72px;
   box-sizing: border-box;
   display: flex;

@@ -8,11 +8,11 @@ gsap.registerPlugin(ScrollTrigger)
 const SERVICES = [
   {
     id: '01',
-    title: 'Custom Fabrication',
+    title: 'Hospital Kitchen Appliances',
     description:
-      'Precision-cut and welded stainless steel structures built to exact specifications — from modular kitchen units to industrial enclosures crafted for lasting performance.',
+      'Hygienic stainless steel kitchen appliances and equipment purpose-built for hospitals and healthcare facilities — designed to meet strict sanitation standards while ensuring safe, efficient food preparation for patients and staff.',
     img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80',
-    tags: ['CNC Cutting', 'TIG Welding', 'Custom Design'],
+    tags: ['Healthcare Grade', 'Hygienic Design', 'Custom Build'],
   },
   {
     id: '02',
@@ -24,19 +24,19 @@ const SERVICES = [
   },
   {
     id: '03',
-    title: 'Industrial Equipment',
+    title: 'Kitchen Appliances',
     description:
-      'Heavy-duty tanks, hoppers, ducting, and process vessels crafted from food-grade and medical-grade stainless steel alloys for demanding environments.',
+      'Premium stainless steel kitchen appliances built for performance and longevity — from heavy-duty cooking ranges and exhaust hoods to food warmers and prep equipment crafted for professional kitchens.',
     img: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=900&q=80',
-    tags: ['Tanks & Vessels', 'Ducting', 'Process Lines'],
+    tags: ['Cooking Ranges', 'Exhaust Hoods', 'Food Warmers'],
   },
   {
     id: '04',
-    title: 'Architectural Cladding',
+    title: 'Modular Kitchen Units',
     description:
-      'Aesthetic and durable stainless steel cladding, facades, handrails, and feature walls for commercial and hospitality spaces that demand distinction.',
+      'Pre-fabricated stainless steel modular kitchen systems designed for quick installation and seamless functionality — ideal for hotels, restaurants, and large-scale catering operations that demand consistency and hygiene.',
     img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80',
-    tags: ['Facades', 'Handrails', 'Feature Walls'],
+    tags: ['Modular Design', 'Quick Install', 'Catering Ready'],
   },
 ]
 
@@ -46,7 +46,6 @@ export default function Services() {
   const wrapperRef  = useRef(null)
   const imgRefs     = useRef([])
   const rowRefs     = useRef([])
-  const progressRef = useRef(null)
   const [activeIdx, setActiveIdx] = useState(0)
 
   function activateItem(idx) {
@@ -56,21 +55,13 @@ export default function Services() {
       if (!el) return
       if (i === idx) {
         gsap.fromTo(el,
-          { opacity: 0, scale: 1.07 },
-          { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out' }
+          { opacity: 0, scale: 1.05 },
+          { opacity: 1, scale: 1, duration: 0.35, ease: 'power2.out' }
         )
       } else {
-        gsap.to(el, { opacity: 0, scale: 1.04, duration: 0.4, ease: 'power2.in' })
+        gsap.to(el, { opacity: 0, scale: 1.03, duration: 0.2, ease: 'power2.in' })
       }
     })
-
-    if (progressRef.current) {
-      gsap.to(progressRef.current, {
-        scaleY: (idx + 1) / N,
-        duration: 0.5,
-        ease: 'power2.inOut',
-      })
-    }
 
     rowRefs.current.forEach((el, i) => {
       el?.classList.toggle('svc-row--active', i === idx)
@@ -81,10 +72,9 @@ export default function Services() {
     const ctx = gsap.context(() => {
       // Initial state
       imgRefs.current.forEach((el, i) => {
-        if (el) gsap.set(el, { opacity: i === 0 ? 1 : 0, scale: i === 0 ? 1 : 1.07 })
+        if (el) gsap.set(el, { opacity: i === 0 ? 1 : 0, scale: i === 0 ? 1 : 1.05 })
       })
       rowRefs.current[0]?.classList.add('svc-row--active')
-      if (progressRef.current) gsap.set(progressRef.current, { scaleY: 1 / N })
 
       // ScrollTrigger per segment
       SERVICES.forEach((_, i) => {
@@ -131,10 +121,6 @@ export default function Services() {
         </div>
 
         <div className="svc-body">
-
-          <div className="svc-progress-track">
-            <div className="svc-progress-fill" ref={progressRef} />
-          </div>
 
           <div className="svc-list">
             {SERVICES.map((s, i) => (

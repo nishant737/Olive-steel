@@ -102,14 +102,13 @@ export default function Projects() {
     const target = posRef.current + dir * -STEP
     gsap.to(posRef, {
       current: target,
-      duration: 0.55,
-      ease: 'power3.inOut',
+      duration: 0.32,
+      ease: 'expo.out',
       onUpdate: () => {
         gsap.set(trackRef.current, { x: posRef.current })
         updateDot(posRef.current)
       },
       onComplete: () => {
-        // Normalise so we never drift too far
         posRef.current = ((posRef.current % (-STEP * TOTAL)) - STEP * TOTAL) % (-STEP * TOTAL)
         gsap.set(trackRef.current, { x: posRef.current })
         startLoop()
@@ -202,8 +201,8 @@ export default function Projects() {
               const target = -(STEP * TOTAL + STEP * i)
               gsap.to(posRef, {
                 current: target,
-                duration: 0.6,
-                ease: 'power3.inOut',
+                duration: 0.38,
+                ease: 'expo.out',
                 onUpdate: () => {
                   gsap.set(trackRef.current, { x: posRef.current })
                   updateDot(posRef.current)
@@ -218,6 +217,7 @@ export default function Projects() {
           />
         ))}
       </div>
+
 
     </section>
   )

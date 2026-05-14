@@ -10,14 +10,6 @@ const NAV = [
   { label: 'Contact',  href: '#contact' },
 ]
 
-const SERVICES = [
-  'Custom Fabrication',
-  'Commercial Kitchens',
-  'Industrial Equipment',
-  'Architectural Cladding',
-  'Stainless Steel Tanks',
-  'On-site Installation',
-]
 
 export default function Footer() {
   return (
@@ -63,16 +55,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Services */}
-        <div className="footer-col">
-          <h4 className="footer-col-title">Services</h4>
-          <ul className="footer-links">
-            {SERVICES.map(s => (
-              <li key={s}><a href="#services">{s}</a></li>
-            ))}
-          </ul>
-        </div>
-
         {/* Contact */}
         <div className="footer-col">
           <h4 className="footer-col-title">Contact</h4>
@@ -98,12 +80,29 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* Map */}
+        <div className="footer-col footer-map-col">
+          <h4 className="footer-col-title">Find Us</h4>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.2214058458476!2d74.85805877520644!3d12.893480016585965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35a173ea55c99%3A0x4d0f1bb5176e28c6!2sOlivesteel%20Solutions!5e0!3m2!1sen!2sin!4v1778740307175!5m2!1sen!2sin"
+            width="100%"
+            height="220"
+            style={{ border: 0, borderRadius: '10px' }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Olive Steel Location"
+          />
+        </div>
+
       </div>
 
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Olive Steel. All rights reserved.</span>
         <span>Crafted with precision.</span>
       </div>
+
+
 
     </footer>
   )

@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
 import SplashScreen from './SplashScreen'
+import Navbar from './Navbar'
 import Hero from './Hero'
 import About from './About'
 import Services from './Services'
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
       {showSplash && <SplashScreen onDone={handleSplashDone} />}
+      <Navbar />
       <Hero />
       <About />
       <Services />

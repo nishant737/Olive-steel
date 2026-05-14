@@ -31,17 +31,17 @@
 
 body {
   margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
 }
 
 #root {
   min-height: 100svh;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
 }
 
 h1 {
