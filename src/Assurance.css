@@ -1,0 +1,225 @@
+.asr-section {
+  background: #080808;
+  padding: 120px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow top-left */
+.asr-bg-glow {
+  position: absolute;
+  top: -160px;
+  left: -160px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(200,212,138,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.asr-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ── */
+.asr-header {
+  margin-bottom: 72px;
+}
+
+.asr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200,212,138,0.07);
+  border: 1px solid rgba(200,212,138,0.2);
+  border-radius: 999px;
+  padding: 5px 16px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: rgba(200,212,138,0.75);
+  letter-spacing: 0.55px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.asr-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c8d48a;
+  display: inline-block;
+  animation: asr-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes asr-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.55); }
+}
+
+.asr-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.asr-heading em {
+  font-style: italic;
+  color: #c8d48a;
+}
+
+.asr-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.35);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Grid ── */
+.asr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  border: 1px solid rgba(200,212,138,0.1);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* ── Card ── */
+.asr-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 36px;
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(200,212,138,0.08);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.35s ease;
+  opacity: 0;
+  transform: translateY(28px);
+  animation: asr-in 0.55s ease forwards;
+  animation-delay: calc(var(--i) * 0.08s);
+}
+
+@keyframes asr-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.asr-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(200,212,138,0.06) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.asr-card:hover {
+  background: rgba(200,212,138,0.04);
+}
+
+.asr-card:hover::before {
+  opacity: 1;
+}
+
+/* ── Icon ── */
+.asr-icon-wrap {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.asr-icon-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: rgba(200,212,138,0.08);
+  border: 1px solid rgba(200,212,138,0.18);
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.asr-card:hover .asr-icon-ring {
+  background: rgba(200,212,138,0.14);
+  border-color: rgba(200,212,138,0.35);
+}
+
+.asr-icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 26px;
+  height: 26px;
+  color: #c8d48a;
+  transition: transform 0.35s ease;
+}
+
+.asr-card:hover .asr-icon {
+  transform: scale(1.15);
+}
+
+/* ── Text ── */
+.asr-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.asr-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f0ede6;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.asr-desc {
+  font-size: 0.86rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .asr-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .asr-section {
+    padding: 80px 16px;
+  }
+
+  .asr-grid {
+    grid-template-columns: 1fr;
+    border-radius: 16px;
+  }
+
+  .asr-card {
+    padding: 28px 24px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .asr-icon-wrap {
+    flex-shrink: 0;
+  }
+
+  .asr-heading {
+    font-size: 2.3rem;
+  }
+
+  .asr-header {
+    margin-bottom: 48px;
+  }
+}

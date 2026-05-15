@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Services.css'
+import img001 from './assets/image001.jpg'
+import img002 from './assets/image002.jpg'
+import img004 from './assets/image004.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -11,7 +14,7 @@ const SERVICES = [
     title: 'Hospital Kitchen Appliances',
     description:
       'Hygienic stainless steel kitchen appliances and equipment purpose-built for hospitals and healthcare facilities — designed to meet strict sanitation standards while ensuring safe, efficient food preparation for patients and staff.',
-    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80',
+    img: img001,
     tags: ['Healthcare Grade', 'Hygienic Design', 'Custom Build'],
   },
   {
@@ -19,7 +22,7 @@ const SERVICES = [
     title: 'Commercial Kitchens',
     description:
       'Full-suite stainless steel kitchen solutions — countertops, sinks, shelving, and prep stations — engineered for hygiene and heavy daily use.',
-    img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80',
+    img: img002,
     tags: ['Worktops', 'Sinks & Drains', 'Shelving'],
   },
   {
@@ -35,7 +38,7 @@ const SERVICES = [
     title: 'Modular Kitchen Units',
     description:
       'Pre-fabricated stainless steel modular kitchen systems designed for quick installation and seamless functionality — ideal for hotels, restaurants, and large-scale catering operations that demand consistency and hygiene.',
-    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80',
+    img: img004,
     tags: ['Modular Design', 'Quick Install', 'Catering Ready'],
   },
 ]

@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import logo from './assets/finallogoolive.png'
 import heroBg from './assets/nero.jpeg'
+import heroVideo from './assets/hero section video 01.mov'
 import './Hero.css'
 
 const HEADINGS = [
@@ -11,12 +12,46 @@ const HEADINGS = [
 ]
 
 function Hero() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [headIdx,  setHeadIdx]  = useState(0)
-  const [phase,    setPhase]    = useState('in')
+  const [menuOpen,      setMenuOpen]      = useState(false)
+  const [headIdx,       setHeadIdx]       = useState(0)
+  const [phase,         setPhase]         = useState('in')
+  const [contentReady,  setContentReady]  = useState(false)
+  const [videoEnded,    setVideoEnded]    = useState(false)
+  const videoRef = useRef(null)
 
-  // Heading cycle
+  // Set playback speed and handle autoplay fallback
   useEffect(() => {
+    const vid = videoRef.current
+    if (!vid) return
+    vid.playbackRate = 2.5
+
+    // If autoplay is blocked or video can't play → show content immediately
+    const fallback = setTimeout(() => {
+      if (!contentReady) revealContent()
+    }, 8000)
+
+    vid.addEventListener('timeupdate', () => {
+      if (!vid.duration) return
+      const remaining = vid.duration - vid.currentTime
+      if (remaining < 2) {
+        const t = remaining / 2             // 1 → 0
+        vid.playbackRate = Math.max(1.2, t * 2.5)
+      }
+    })
+
+    vid.play().catch(() => revealContent())
+
+    return () => clearTimeout(fallback)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  function revealContent() {
+    setVideoEnded(true)
+    setTimeout(() => setContentReady(true), 60)
+  }
+
+  // Heading cycle — only after content is visible
+  useEffect(() => {
+    if (!contentReady) return
     const id = setInterval(() => {
       setPhase('out')
       setTimeout(() => {
@@ -25,30 +60,38 @@ function Hero() {
       }, 400)
     }, 3800)
     return () => clearInterval(id)
-  }, [])
+  }, [contentReady])
 
-  // Lock body scroll when menu is open — prevents layout shift
+  // Lock body scroll when menu open
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
-  const close = () => setMenuOpen(false)
+  const close = useCallback(() => setMenuOpen(false), [])
 
   return (
     <>
       <div className="hero-root" id="hero">
 
-        {/* Background */}
-        <img src={heroBg} alt="" className="hero-bg" />
-        <div className="hero-overlay" />
+        {/* ── Video background ── */}
+        <video
+          ref={videoRef}
+          className="hero-video"
+          src={heroVideo}
+          muted
+          playsInline
+          preload="auto"
+          onEnded={revealContent}
+          poster={heroBg}
+        />
 
-        {/* Navbar */}
-        <nav className="nav">
+
+        {/* Dark overlay */}
+        <div className={`hero-overlay${contentReady ? ' hero-overlay--content' : ''}`} />
+
+        {/* ── Navbar — always visible ── */}
+        <nav className={`nav${contentReady ? ' nav--visible' : ' nav--hidden'}`}>
           <img src={logo} alt="Olive Steel" className="nav-logo" />
 
           <div className="nav-pill">
@@ -71,10 +114,10 @@ function Hero() {
           </button>
         </nav>
 
-        {/* Hero body */}
+        {/* ── Hero body — revealed after video ── */}
         <div className="hero-body">
           <div className="hero-left">
-            <h1 className={`hero-heading hero-heading--${phase}`}>
+            <h1 className={`hero-heading hero-heading--${phase} ${contentReady ? 'hero-el--visible' : 'hero-el'}`} style={{ '--d': '0.1s' }}>
               {HEADINGS[headIdx].map((line, i) => (
                 <span
                   key={`${headIdx}-${i}`}
@@ -85,12 +128,12 @@ function Hero() {
                 </span>
               ))}
             </h1>
-            <p className="hero-desc">
+            <p className={`hero-desc ${contentReady ? 'hero-el--visible' : 'hero-el'}`} style={{ '--d': '0.38s' }}>
               Backed by decades of industry experience, we specialise in fabricating
               and delivering high-quality stainless steel solutions that combine
               durability, hygiene, and operational excellence.
             </p>
-            <a href="#services" className="hero-btn">
+            <a href="#services" className={`hero-btn ${contentReady ? 'hero-el--visible' : 'hero-el'}`} style={{ '--d': '0.62s' }}>
               Explore Services
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
@@ -100,10 +143,8 @@ function Hero() {
         </div>
       </div>
 
-      {/* ── Mobile menu — fixed overlay, completely outside hero-root ── */}
+      {/* ── Mobile full-screen overlay menu ── */}
       <div className={`mob-menu${menuOpen ? ' mob-menu--open' : ''}`} aria-hidden={!menuOpen}>
-
-        {/* Header row */}
         <div className="mob-menu__header">
           <img src={logo} alt="Olive Steel" className="mob-menu__logo" />
           <button className="mob-menu__close" onClick={close} aria-label="Close menu">
@@ -113,7 +154,6 @@ function Hero() {
           </button>
         </div>
 
-        {/* Nav links */}
         <nav className="mob-menu__nav">
           {['about','services','projects','clients','faq'].map((id, i) => (
             <a
@@ -131,13 +171,11 @@ function Hero() {
           ))}
         </nav>
 
-        {/* CTA */}
         <a href="#contact" className="mob-menu__cta" onClick={close}>
           Get a Quote
         </a>
       </div>
 
-      {/* Backdrop */}
       {menuOpen && <div className="mob-backdrop" onClick={close} />}
     </>
   )

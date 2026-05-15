@@ -8,6 +8,7 @@ import Services from './Services'
 import Projects from './Projects'
 import Clients from './Clients'
 import FAQ from './FAQ'
+import Assurance from './Assurance'
 import Contact from './Contact'
 import Footer from './Footer'
 
@@ -26,6 +27,7 @@ function App() {
       <Projects />
       <Clients />
       <FAQ />
+      <Assurance />
       <Contact />
       <Footer />
     </>

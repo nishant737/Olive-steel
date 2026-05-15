@@ -1,48 +1,94 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import './Projects.css'
+import bainMarie from './assets/product/Bain Marie.png'
+import burner from './assets/product/Burner.png'
+import closedCabinet from './assets/product/Closed Cabinet with Glass doors.png'
+import endoscope from './assets/product/Endoscope-storge.png'
+import oilFryer from './assets/product/Oil Fryer.png'
+import sandwichGriller from './assets/product/Sandwich Griller.png'
+import sink from './assets/product/Sink.jpeg'
+import tawa from './assets/product/Tawa.jpeg'
+import undercounterChiller from './assets/product/Undercounter Chiller.png'
+import verticalChiller from './assets/product/Vertical Chiller.jpeg'
+import tandoorbatti from './assets/product/tandoorbatti.jpeg'
 
 const PROJECTS = [
   {
-    title: 'Industrial Kitchen Suite',
-    desc: 'Full stainless steel build for a high-volume restaurant chain.',
-    img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80',
+    title: 'Bain Marie',
+    desc: 'Stainless steel bain marie for keeping food warm at the right temperature.',
+    img: bainMarie,
     style: 'Commercial',
-    duration: '4 weeks',
-  },
-  {
-    title: 'The Modern Touch',
-    desc: 'Modern kitchen with quartz counters and white cabinetry.',
-    img: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=900&q=80',
-    style: 'Modern',
-    duration: '3 weeks',
-  },
-  {
-    title: 'Steel Lab Workstation',
-    desc: 'Precision fabricated workbenches for a pharmaceutical lab.',
-    img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80',
-    style: 'Industrial',
-    duration: '6 weeks',
-  },
-  {
-    title: 'Luxury Open Concept',
-    desc: 'Refined concept with marble surfaces and custom steel fixtures.',
-    img: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=900&q=80',
-    style: 'Luxury',
     duration: '2 weeks',
   },
   {
-    title: 'Coastal Prep Kitchen',
-    desc: 'Hygienic stainless steel prep area for a seafood processing plant.',
-    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80',
-    style: 'Hygiene+',
-    duration: '5 weeks',
+    title: 'Burner',
+    desc: 'Heavy-duty commercial burner built for high-performance kitchen use.',
+    img: burner,
+    style: 'Industrial',
+    duration: '1 week',
   },
   {
-    title: 'Architectural Facade',
-    desc: 'Custom steel cladding and handrails for a hospitality venue.',
-    img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80',
-    style: 'Architectural',
-    duration: '8 weeks',
+    title: 'Closed Cabinet with Glass Doors',
+    desc: 'Elegant steel cabinet with glass doors for organized storage and display.',
+    img: closedCabinet,
+    style: 'Storage',
+    duration: '2 weeks',
+  },
+  {
+    title: 'Endoscope Storage',
+    desc: 'Precision-built storage unit for safe and hygienic endoscope handling.',
+    img: endoscope,
+    style: 'Medical',
+    duration: '3 weeks',
+  },
+  {
+    title: 'Oil Fryer',
+    desc: 'Commercial-grade stainless steel oil fryer for continuous kitchen operations.',
+    img: oilFryer,
+    style: 'Commercial',
+    duration: '1 week',
+  },
+  {
+    title: 'Sandwich Griller',
+    desc: 'Compact and efficient sandwich griller crafted in food-grade stainless steel.',
+    img: sandwichGriller,
+    style: 'Appliance',
+    duration: '1 week',
+  },
+  {
+    title: 'Sink',
+    desc: 'Deep stainless steel sink built for heavy-duty commercial kitchen use.',
+    img: sink,
+    style: 'Hygiene+',
+    duration: '1 week',
+  },
+  {
+    title: 'Tawa',
+    desc: 'Large flat-top stainless steel tawa ideal for high-volume cooking.',
+    img: tawa,
+    style: 'Commercial',
+    duration: '1 week',
+  },
+  {
+    title: 'Undercounter Chiller',
+    desc: 'Space-saving undercounter chiller with stainless steel finish for kitchens.',
+    img: undercounterChiller,
+    style: 'Refrigeration',
+    duration: '2 weeks',
+  },
+  {
+    title: 'Vertical Chiller',
+    desc: 'Full-height vertical chiller for storing perishables in commercial kitchens.',
+    img: verticalChiller,
+    style: 'Refrigeration',
+    duration: '2 weeks',
+  },
+  {
+    title: 'Tandoor Batti',
+    desc: 'Traditional tandoor batti crafted with precision for authentic cooking.',
+    img: tandoorbatti,
+    style: 'Traditional',
+    duration: '2 weeks',
   },
 ]
 
@@ -98,7 +144,7 @@ export default function Projects() {
           <span className="proj-badge-dot" />
           Our Work
         </div>
-        <h2 className="proj-heading">Featured <em>Projects</em></h2>
+        <h2 className="proj-heading">Featured <em>Products</em></h2>
         <p className="proj-sub">Built with precision, delivered on time.</p>
       </div>
 
@@ -118,17 +164,6 @@ export default function Projects() {
             >
               <img src={p.img} alt={p.title} className="proj-card-img" />
 
-              <div className="proj-card-glass">
-                <div className="proj-pills">
-                  <span className="proj-pill">{p.style}</span>
-                  <span className="proj-pill proj-pill--time">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                    {p.duration}
-                  </span>
-                </div>
-              </div>
 
               <div className="proj-card-info">
                 <h3 className="proj-card-title">{p.title}</h3>

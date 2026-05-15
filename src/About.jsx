@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import './About.css'
+import hero01 from './assets/hero01.jpg'
+import hero02 from './assets/hero 02.jpg'
+import hero03 from './assets/hero3.jpg'
 
-const DUMMY_IMGS = [
-  'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80',
-  'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600&q=80',
-  'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80',
-]
+const DUMMY_IMGS = [hero01, hero02, hero03]
 
 const STATS = [
   { end: 500, suffix: '+', label: 'Projects' },
@@ -89,9 +88,7 @@ export default function About() {
         </h2>
 
         <p className={`about-desc${visible ? ' about-desc--in' : ''}`}>
-          Olive Steel delivers precision-engineered stainless steel solutions with lasting
-          durability &amp; hygiene — where every cut is measured with intention, every weld
-          executed with care, and every product built to outlast the industry standard.
+         We are a leading provider of stainless-steel solutions in coastal Karnataka. In the last six years, we have been catering to the custom made stainless steel requirements of reputed enterprises of two key industries of our region namely hospitality and hospitals. Situated in the heart of Mangaluru’s Industrial estate, our state-of-the-art operations and commitment to process improvements and customer satisfaction have made us one among the top sought commercial kitchen and hospital equipment suppliers in the region.
         </p>
 
         <div className="about-stats">

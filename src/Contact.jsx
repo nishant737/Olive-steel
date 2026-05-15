@@ -37,7 +37,7 @@ export default function Contact() {
             </span>
             <div>
               <span className="ctc-detail-label">Phone</span>
-              <span className="ctc-detail-value">+91 98765 43210</span>
+              <span className="ctc-detail-value">073533 74444</span>
             </div>
           </a>
 
@@ -61,7 +61,7 @@ export default function Contact() {
             </span>
             <div>
               <span className="ctc-detail-label">Location</span>
-              <span className="ctc-detail-value">Bangalore, Karnataka</span>
+              <span className="ctc-detail-value">L.24, Industrial Estate, Yeyyadi, Mangaluru, Karnataka 575008</span>
             </div>
           </div>
         </div>
