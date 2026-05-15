@@ -46,7 +46,7 @@ function Hero() {
 
   function revealContent() {
     setVideoEnded(true)
-    setTimeout(() => setContentReady(true), 60)
+    setTimeout(() => setContentReady(true), 200)
   }
 
   // Heading cycle — only after content is visible

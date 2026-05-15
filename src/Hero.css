@@ -19,7 +19,6 @@
   object-fit: cover;
   object-position: center;
   z-index: 0;
-  transition: opacity 1s ease;
 }
 
 
@@ -149,6 +148,8 @@
 .hero-el {
   opacity: 0;
   transform: translateY(36px);
+  transition: opacity 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--d, 0s),
+              transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--d, 0s);
 }
 
 .hero-el--visible {

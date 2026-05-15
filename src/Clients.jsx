@@ -1,36 +1,39 @@
 import { useState } from 'react'
 import './Clients.css'
 
-import nitteImg    from './assets/nitte-logo.jpeg'
-import tajImg      from './assets/taj.png'
-import madhuvanImg from './assets/madhuvan.png'
-import idealImg    from './assets/ideal.png'
-import ullasImg    from './assets/ullas.jpeg'
-import ONGCImg     from './assets/ONGC.jpeg'
-import kiolImg     from './assets/kiol.png'
-import kmcImg      from './assets/kmc.jpeg'
-import alvaImg     from './assets/alva.png'
-import oceanImg    from './assets/oceean.jpeg'
-import ajImg       from './assets/aj.png'
-import craveImg    from './assets/crave.jpeg'
-import ratnaImg    from './assets/ratna.png'
-import rnsImg      from './assets/rns-one.png'
-import meilImg     from './assets/meil.jpeg'
+import nitteImg      from './assets/nitte-logo.jpeg'
+import tajImg        from './assets/taj.png'
+import madhuvanImg   from './assets/madhuvan.png'
+import idealImg      from './assets/ideal.png'
+import ullasImg      from './assets/ullas.jpeg'
+import ONGCImg       from './assets/ONGC.jpeg'
+import kiolImg       from './assets/kiol.png'
+import kmcImg        from './assets/kmc.jpeg'
+import alvaImg       from './assets/alva.png'
+import oceanImg      from './assets/oceean.jpeg'
+import ajImg         from './assets/aj.png'
+import craveImg      from './assets/crave.jpeg'
+import ratnaImg      from './assets/ratna.png'
+import rnsImg        from './assets/rns-one.png'
+import meilImg       from './assets/meil.jpeg'
+import tandooImg     from './assets/Tandoo Hotel.png'
+import tejasviniImg  from './assets/Tejasvini Hospital .jpeg'
+import yenapoyaImg   from './assets/yenapoya.png'
+import bharathImg    from './assets/bharath school.jpeg'
+import cineplexImg   from './assets/cineplex.png'
+import cochinImg     from './assets/cochin bakery .png'
 
 /*
-  Everything lives inside one SVG so logos are always
-  pixel-perfect on their arc — no CSS vs SVG coordinate drift.
-
-  ViewBox: 0 0 200 110
-  Arc centre: cx=100, cy=109  (just below bottom edge so base line is visible)
-  Radii: inner=34, middle=56, outer=80  (SVG units)
+  Four concentric arcs. Arc centre: cx=100, cy=109
+  Radii: inner=34, middle=56, outer=80, extra=98
   Logo circle radius: LR = 6.5 SVG units
+  ViewBox expanded upward to accommodate extra ring.
 */
 
 const CX = 100, CY = 109
-const INNER = 34, MIDDLE = 56, OUTER = 80
-const LR = 6.5        // logo circle radius in SVG units
-const VB = '0 0 200 110'
+const INNER = 34, MIDDLE = 56, OUTER = 80, EXTRA = 98
+const LR = 6.5
+const VB = '0 -5 200 115'
 
 /** Polar → SVG cartesian. angle 90°=top, 0°=left-side, 180°=right-side */
 function pt(r, deg) {
@@ -40,28 +43,36 @@ function pt(r, deg) {
 
 const LOGOS = [
   // Inner arc (3)
-  { img: tajImg,      name: 'Taj Hotels',   ...pt(INNER,  90) },
-  { img: kmcImg,      name: 'KMC Hospital', ...pt(INNER,  38) },
-  { img: alvaImg,     name: "Alva's",       ...pt(INNER, 142) },
+  { img: tajImg,       name: 'Taj Hotels',        ...pt(INNER,  90) },
+  { img: kmcImg,       name: 'KMC Hospital',      ...pt(INNER,  38) },
+  { img: alvaImg,      name: "Alva's",            ...pt(INNER, 142) },
 
   // Middle arc (5)
-  { img: nitteImg,    name: 'Nitte',        ...pt(MIDDLE,  90) },
-  { img: ONGCImg,     name: 'ONGC',         ...pt(MIDDLE,  54) },
-  { img: oceanImg,    name: 'Ocean Pearl',  ...pt(MIDDLE, 126) },
-  { img: meilImg,     name: 'Meil',         ...pt(MIDDLE,  20) },
-  { img: madhuvanImg, name: 'Madhuvan',     ...pt(MIDDLE, 160) },
+  { img: nitteImg,     name: 'Nitte',             ...pt(MIDDLE,  90) },
+  { img: ONGCImg,      name: 'ONGC',              ...pt(MIDDLE,  54) },
+  { img: oceanImg,     name: 'Ocean Pearl',       ...pt(MIDDLE, 126) },
+  { img: meilImg,      name: 'Meil',              ...pt(MIDDLE,  20) },
+  { img: madhuvanImg,  name: 'Madhuvan',          ...pt(MIDDLE, 160) },
 
   // Outer arc (7)
-  { img: idealImg,    name: 'Ideal',        ...pt(OUTER,  90) },
-  { img: kiolImg,     name: 'Kiol',         ...pt(OUTER,  64) },
-  { img: craveImg,    name: 'Crave',        ...pt(OUTER, 116) },
-  { img: ullasImg,    name: 'Ullas',        ...pt(OUTER,  39) },
-  { img: ajImg,       name: 'AJ Hospitals', ...pt(OUTER, 141) },
-  { img: ratnaImg,    name: 'Sagar Ratna',  ...pt(OUTER,  15) },
-  { img: rnsImg,      name: 'RNS One',      ...pt(OUTER, 165) },
+  { img: idealImg,     name: 'Ideal',             ...pt(OUTER,  90) },
+  { img: kiolImg,      name: 'Kiol',              ...pt(OUTER,  64) },
+  { img: craveImg,     name: 'Crave',             ...pt(OUTER, 116) },
+  { img: ullasImg,     name: 'Ullas',             ...pt(OUTER,  39) },
+  { img: ajImg,        name: 'AJ Hospitals',      ...pt(OUTER, 141) },
+  { img: ratnaImg,     name: 'Sagar Ratna',       ...pt(OUTER,  15) },
+  { img: rnsImg,       name: 'RNS One',           ...pt(OUTER, 165) },
+
+  // Extra arc (6)
+  { img: tandooImg,    name: 'Tandoor Hotel',     ...pt(EXTRA,  90) },
+  { img: tejasviniImg, name: 'Tejasvini Hospital',...pt(EXTRA,  60) },
+  { img: yenapoyaImg,  name: 'Yenepoya Hospital', ...pt(EXTRA, 120) },
+  { img: bharathImg,   name: 'Bharath School',    ...pt(EXTRA,  32) },
+  { img: cineplexImg,  name: 'Cineplex',          ...pt(EXTRA, 148) },
+  { img: cochinImg,    name: 'Cochin Bakery',     ...pt(EXTRA,  10) },
 ]
 
-const SPOKES = [15, 20, 38, 39, 54, 64, 90, 116, 126, 141, 142, 160, 165]
+const SPOKES = [10, 15, 20, 32, 38, 39, 54, 60, 64, 90, 116, 120, 126, 141, 142, 148, 160, 165]
 
 export default function Clients() {
   const [tooltip, setTooltip] = useState(null) // { name, x, y }
@@ -116,6 +127,7 @@ export default function Clients() {
 
             {/* Filled bands between arcs */}
             {[
+              { o: EXTRA,  i: OUTER  },
               { o: OUTER,  i: MIDDLE },
               { o: MIDDLE, i: INNER  },
               { o: INNER,  i: 0      },
@@ -129,12 +141,12 @@ export default function Clients() {
                     : `M ${CX-o} ${CY} A ${o} ${o} 0 0 1 ${CX+o} ${CY} L ${CX} ${CY} Z`
                 }
                 fill="url(#glow)"
-                opacity={0.35 + idx * 0.25}
+                opacity={0.25 + idx * 0.2}
               />
             ))}
 
             {/* Arc ring lines */}
-            {[INNER, MIDDLE, OUTER].map(r => (
+            {[INNER, MIDDLE, OUTER, EXTRA].map(r => (
               <path
                 key={r}
                 d={`M ${CX-r} ${CY} A ${r} ${r} 0 0 1 ${CX+r} ${CY}`}
@@ -162,8 +174,8 @@ export default function Clients() {
 
           {/* ── Base line (static) ── */}
           <line
-            x1={CX - OUTER - 8} y1={CY}
-            x2={CX + OUTER + 8} y2={CY}
+            x1={CX - EXTRA - 8} y1={CY}
+            x2={CX + EXTRA + 8} y2={CY}
             stroke="rgba(200,212,138,0.35)"
             strokeWidth="0.4"
           />
