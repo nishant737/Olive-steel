@@ -209,6 +209,13 @@
   }
 }
 
+/* Center a lone last logo that starts a new row */
+@media (max-width: 768px) {
+  .cli-mobile-grid .cli-logo-cell:last-child:nth-child(3n+1) {
+    grid-column: 2;
+  }
+}
+
 @media (max-width: 400px) {
   .cli-mobile-grid { max-width: 100%; gap: 10px; }
   .cli-heading { font-size: 1.85rem; }

@@ -37,7 +37,7 @@ export default function Contact() {
             </span>
             <div>
               <span className="ctc-detail-label">Phone</span>
-              <span className="ctc-detail-value">073533 74444</span>
+              <span className="ctc-detail-value">7353374444</span>
             </div>
           </a>
 
@@ -49,7 +49,7 @@ export default function Contact() {
             </span>
             <div>
               <span className="ctc-detail-label">Email</span>
-              <span className="ctc-detail-value">info@olivesteel.in</span>
+              <span className="ctc-detail-value">support@olivesteel.com</span>
             </div>
           </a>
 

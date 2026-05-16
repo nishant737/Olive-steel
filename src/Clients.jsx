@@ -21,52 +21,61 @@ import yenapoyaImg   from './assets/yenapoya.png'
 import bharathImg    from './assets/bharath school.jpeg'
 import cineplexImg   from './assets/cineplex.png'
 import cochinImg     from './assets/cochin bakery .png'
+import wineGatesImg  from './assets/wine gates.jpeg'
+import pavoorImg     from './assets/Pavoor education trust.jpeg'
+import nitkImg       from './assets/Nitk logo.png'
+import milagresImg   from './assets/Milagres logo .jpeg'
 
 const ALL_LOGOS = [
-  { img: tajImg,       name: 'Taj Hotels'         },
-  { img: kmcImg,       name: 'KMC Hospital'       },
-  { img: alvaImg,      name: "Alva's"             },
-  { img: nitteImg,     name: 'Nitte'              },
-  { img: ONGCImg,      name: 'ONGC'               },
-  { img: oceanImg,     name: 'Ocean Pearl'        },
-  { img: meilImg,      name: 'Meil'               },
-  { img: madhuvanImg,  name: 'Madhuvan'           },
-  { img: idealImg,     name: 'Ideal'              },
-  { img: kiolImg,      name: 'Kiol'               },
-  { img: craveImg,     name: 'Crave'              },
-  { img: ullasImg,     name: 'Ullas'              },
-  { img: ajImg,        name: 'AJ Hospitals'       },
-  { img: ratnaImg,     name: 'Sagar Ratna'        },
-  { img: rnsImg,       name: 'RNS One'            },
-  { img: tandooImg,    name: 'Tandoor Hotel'      },
-  { img: tejasviniImg, name: 'Tejasvini Hospital' },
-  { img: yenapoyaImg,  name: 'Yenepoya Hospital'  },
-  { img: bharathImg,   name: 'Bharath School'     },
-  { img: cineplexImg,  name: 'Cineplex'           },
-  { img: cochinImg,    name: 'Cochin Bakery'      },
+  { img: tajImg,       name: 'Taj Hotels'              },
+  { img: kmcImg,       name: 'KMC Hospital'            },
+  { img: alvaImg,      name: "Alva's"                  },
+  { img: nitteImg,     name: 'Nitte'                   },
+  { img: ONGCImg,      name: 'ONGC'                    },
+  { img: oceanImg,     name: 'Ocean Pearl'             },
+  { img: meilImg,      name: 'Meil'                    },
+  { img: madhuvanImg,  name: 'Madhuvan'                },
+  { img: idealImg,     name: 'Ideal'                   },
+  { img: kiolImg,      name: 'Kiol'                    },
+  { img: craveImg,     name: 'Crave'                   },
+  { img: ullasImg,     name: 'Ullas'                   },
+  { img: ajImg,        name: 'AJ Hospitals'            },
+  { img: ratnaImg,     name: 'Sagar Ratna'             },
+  { img: rnsImg,       name: 'RNS One'                 },
+  { img: tandooImg,    name: 'Tandoor Hotel'           },
+  { img: tejasviniImg, name: 'Tejasvini Hospital'      },
+  { img: yenapoyaImg,  name: 'Yenepoya Hospital'       },
+  { img: bharathImg,   name: 'Bharath School'          },
+  { img: cineplexImg,  name: 'Cineplex'                },
+  { img: cochinImg,    name: 'Cochin Bakery'           },
+  { img: wineGatesImg, name: 'Wine Gates'              },
+  { img: pavoorImg,    name: 'Pavoor Education Trust'  },
+  { img: nitkImg,      name: 'NITK'                    },
+  { img: milagresImg,  name: 'Milagres Church'         },
 ]
 
 /*
-  Desktop: 3-col × 5-row ghost grid per side.
-  Gaps give the scattered floating look.
+  Desktop: 3-col × 5-row ghost grid per side (15 slots max).
+  Left: 13 logos  Right: 12 logos  Total: 25
 */
 const LEFT_POSITIONS = [
-  [0, 0], [2, 0],
+  [0, 0], [1, 0], [2, 0],
   [0, 1], [1, 1],
   [1, 2], [2, 2],
   [0, 3], [2, 3],
   [0, 4], [1, 4], [2, 4],
+  [2, 1],
 ]
 const RIGHT_POSITIONS = [
-  [0, 0], [2, 0],
-  [1, 1], [2, 1],
+  [0, 0], [1, 0], [2, 0],
+  [0, 1], [1, 1], [2, 1],
   [0, 2], [1, 2],
   [1, 3], [2, 3],
   [0, 4], [2, 4],
 ]
 
-const LEFT_LOGOS  = ALL_LOGOS.slice(0, 11)
-const RIGHT_LOGOS = ALL_LOGOS.slice(11, 21)
+const LEFT_LOGOS  = ALL_LOGOS.slice(0, 13)
+const RIGHT_LOGOS = ALL_LOGOS.slice(13, 25)
 
 function DesktopGrid({ logos, positions, side }) {
   return (
