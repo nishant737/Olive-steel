@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx vite *)"
+      "Bash(npx vite *)",
+      "Bash(git stash *)",
+      "Bash(xargs cat)",
+      "Bash(git checkout *)"
     ]
   }
 }

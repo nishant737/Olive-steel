@@ -1,104 +1,19 @@
-/* ── Clients section ── */
+/* ── Section ── */
 .cli-section {
-  background: #0a0b0a;
-  padding: 100px 0;
+  background: #000;
+  padding: 96px 60px 112px;
   font-family: 'DM Sans', system-ui, sans-serif;
-  overflow: hidden;
 }
 
-/* ════════════════════════════════════════
-   DESKTOP  (> 768px)
-════════════════════════════════════════ */
-.cli-desktop {
-  display: grid;
-  grid-template-columns: 1fr 380px 1fr;
-  align-items: center;
-  min-height: 480px;
-  width: 100%;
+.cli-inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.cli-mobile { display: none; }
-
-/* ── Grid wrapper ── */
-.cli-grid-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.cli-grid-wrap--left  { justify-content: flex-end;  padding-right: 44px; }
-.cli-grid-wrap--right { justify-content: flex-start; padding-left:  44px; }
-
-/* Faint checkered texture */
-.cli-texture {
-  position: absolute;
-  inset: -32px;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 78px 78px;
-  mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 30%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 50%, black 30%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* 3-col × 5-row ghost grid */
-.cli-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 68px);
-  grid-template-rows: repeat(5, 68px);
-  gap: 16px;
-}
-
-/* ── Logo card ── */
-.cli-logo-cell {
-  width: 68px;
-  height: 68px;
-  background: #ffffff;
-  border-radius: 18px;
-  border: 1px solid rgba(0,0,0,0.07);
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.08),
-    0 4px 16px rgba(0,0,0,0.14);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 11px;
-  box-sizing: border-box;
-  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1),
-              box-shadow 0.25s ease;
-  animation: cli-float 4s ease-in-out infinite alternate;
-  cursor: default;
-}
-
-.cli-logo-cell:hover {
-  transform: translateY(-6px) scale(1.09);
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.07),
-    0 14px 36px rgba(0,0,0,0.22);
-}
-
-.cli-logo-cell img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 4px;
-  display: block;
-}
-
-@keyframes cli-float {
-  from { transform: translateY(0px);  }
-  to   { transform: translateY(-9px); }
-}
-
-/* ── Centre content (shared) ── */
-.cli-center {
+/* ── Header ── */
+.cli-header {
+  margin-bottom: 64px;
   text-align: center;
-  padding: 0 20px;
-  z-index: 1;
 }
 
 .cli-badge {
@@ -109,12 +24,12 @@
   border: 1px solid rgba(200,212,138,0.22);
   border-radius: 999px;
   padding: 5px 16px;
-  font-size: 0.7rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  color: rgba(200,212,138,0.75);
-  margin-bottom: 20px;
-  letter-spacing: 0.7px;
+  color: rgba(200,212,138,0.8);
+  letter-spacing: 0.6px;
   text-transform: uppercase;
+  margin-bottom: 22px;
 }
 
 .cli-badge-dot {
@@ -127,18 +42,18 @@
 }
 
 @keyframes cli-pulse {
-  0%, 100% { opacity: 1;   transform: scale(1);    }
+  0%, 100% { opacity: 1; transform: scale(1); }
   50%       { opacity: 0.3; transform: scale(0.55); }
 }
 
 .cli-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 2.8vw, 3rem);
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
   color: #fff;
-  margin: 0 0 16px;
-  line-height: 1.1;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 18px;
 }
 
 .cli-heading em {
@@ -147,76 +62,133 @@
 }
 
 .cli-sub {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.38);
-  line-height: 1.78;
-  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.7;
+  margin: 0 auto;
+  max-width: 520px;
 }
 
-/* ── Tablet ── */
-@media (max-width: 1100px) {
-  .cli-desktop { grid-template-columns: 1fr 300px 1fr; }
-
-  .cli-grid {
-    grid-template-columns: repeat(3, 60px);
-    grid-template-rows: repeat(5, 60px);
-    gap: 12px;
-  }
-  .cli-logo-cell { width: 60px; height: 60px; padding: 9px; border-radius: 14px; }
-  .cli-grid-wrap--left  { padding-right: 28px; }
-  .cli-grid-wrap--right { padding-left:  28px; }
+/* ── Grid ── */
+.cli-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-left: 1px solid rgba(255,255,255,0.1);
 }
 
-/* ════════════════════════════════════════
-   MOBILE  (≤ 768px)
-════════════════════════════════════════ */
+/* ── Cell ── */
+.cli-cell {
+  border-right: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 44px 32px;
+  aspect-ratio: 2 / 1;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: background 0.28s ease;
+}
+
+.cli-cell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(200,212,138,0.04);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.cli-cell:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.cli-cell:hover::after {
+  opacity: 1;
+}
+
+.cli-cell img {
+  width: 100%;
+  max-width: 160px;
+  height: 72px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  display: block;
+}
+
+.cli-cell:hover img {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* ── Marquee (mobile only) ── */
+.cli-marquee-wrap {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  padding: 8px 0;
+  position: relative;
+}
+
+.cli-marquee-wrap::before,
+.cli-marquee-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.cli-marquee-wrap::before { left: 0;  background: linear-gradient(to right, #000, transparent); }
+.cli-marquee-wrap::after  { right: 0; background: linear-gradient(to left,  #000, transparent); }
+
+.cli-marquee-track { overflow: visible; width: 100%; }
+
+.cli-marquee-inner {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+}
+
+.cli-marquee-inner--left  { animation: marquee-left  32s linear infinite; }
+.cli-marquee-inner--right { animation: marquee-right 32s linear infinite; }
+
+@keyframes marquee-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.cli-logo-card {
+  flex-shrink: 0;
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.cli-logo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .cli-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
 @media (max-width: 768px) {
-  .cli-section  { padding: 64px 20px; }
-  .cli-desktop  { display: none; }
-  .cli-mobile   {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 36px;
-  }
-
-  .cli-center { padding: 0; }
-
-  /* 3-column uniform grid — 21 logos = 7 clean rows */
-  .cli-mobile-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    width: 100%;
-    max-width: 340px;
-  }
-
-  /* Override desktop fixed size — fill the column */
-  .cli-mobile-grid .cli-logo-cell {
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%; /* perfect square */
-    position: relative;
-    border-radius: 14px;
-    animation: cli-float 4s ease-in-out infinite alternate;
-  }
-
-  .cli-mobile-grid .cli-logo-cell img {
-    position: absolute;
-    inset: 12px;
-    width: calc(100% - 24px);
-    height: calc(100% - 24px);
-  }
-}
-
-/* Center a lone last logo that starts a new row */
-@media (max-width: 768px) {
-  .cli-mobile-grid .cli-logo-cell:last-child:nth-child(3n+1) {
-    grid-column: 2;
-  }
-}
-
-@media (max-width: 400px) {
-  .cli-mobile-grid { max-width: 100%; gap: 10px; }
-  .cli-heading { font-size: 1.85rem; }
+  .cli-section { padding: 72px 0 88px; }
+  .cli-inner   { padding: 0; }
+  .cli-header  { padding: 0 24px; }
+  .cli-grid        { display: none; }
+  .cli-marquee-wrap { display: flex; }
 }

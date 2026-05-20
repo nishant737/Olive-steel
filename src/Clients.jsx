@@ -26,79 +26,47 @@ import pavoorImg     from './assets/Pavoor education trust.jpeg'
 import nitkImg       from './assets/Nitk logo.png'
 import milagresImg   from './assets/Milagres logo .jpeg'
 
-const ALL_LOGOS = [
-  { img: tajImg,       name: 'Taj Hotels'              },
-  { img: kmcImg,       name: 'KMC Hospital'            },
-  { img: alvaImg,      name: "Alva's"                  },
-  { img: nitteImg,     name: 'Nitte'                   },
-  { img: ONGCImg,      name: 'ONGC'                    },
-  { img: oceanImg,     name: 'Ocean Pearl'             },
-  { img: meilImg,      name: 'Meil'                    },
-  { img: madhuvanImg,  name: 'Madhuvan'                },
-  { img: idealImg,     name: 'Ideal'                   },
-  { img: kiolImg,      name: 'Kiol'                    },
-  { img: craveImg,     name: 'Crave'                   },
-  { img: ullasImg,     name: 'Ullas'                   },
-  { img: ajImg,        name: 'AJ Hospitals'            },
-  { img: ratnaImg,     name: 'Sagar Ratna'             },
-  { img: rnsImg,       name: 'RNS One'                 },
-  { img: tandooImg,    name: 'Tandoor Hotel'           },
-  { img: tejasviniImg, name: 'Tejasvini Hospital'      },
-  { img: yenapoyaImg,  name: 'Yenepoya Hospital'       },
-  { img: bharathImg,   name: 'Bharath School'          },
-  { img: cineplexImg,  name: 'Cineplex'                },
-  { img: cochinImg,    name: 'Cochin Bakery'           },
-  { img: wineGatesImg, name: 'Wine Gates'              },
-  { img: pavoorImg,    name: 'Pavoor Education Trust'  },
-  { img: nitkImg,      name: 'NITK'                    },
-  { img: milagresImg,  name: 'Milagres Church'         },
+const LOGOS = [
+  { img: tajImg,       name: 'Taj Hotels'             },
+  { img: kmcImg,       name: 'KMC Hospital'           },
+  { img: alvaImg,      name: "Alva's"                 },
+  { img: nitteImg,     name: 'Nitte'                  },
+  { img: ONGCImg,      name: 'ONGC'                   },
+  { img: oceanImg,     name: 'Ocean Pearl'            },
+  { img: meilImg,      name: 'Meil'                   },
+  { img: madhuvanImg,  name: 'Madhuvan'               },
+  { img: idealImg,     name: 'Ideal'                  },
+  { img: kiolImg,      name: 'Kiol'                   },
+  { img: craveImg,     name: 'Crave'                  },
+  { img: ullasImg,     name: 'Ullas'                  },
+  { img: ajImg,        name: 'AJ Hospitals'           },
+  { img: ratnaImg,     name: 'Sagar Ratna'            },
+  { img: rnsImg,       name: 'RNS One'                },
+  { img: tandooImg,    name: 'Tandoor Hotel'          },
+  { img: tejasviniImg, name: 'Tejasvini Hospital'     },
+  { img: yenapoyaImg,  name: 'Yenepoya Hospital'      },
+  { img: bharathImg,   name: 'Bharath School'         },
+  { img: cineplexImg,  name: 'Cineplex'               },
+  { img: cochinImg,    name: 'Cochin Bakery'          },
+  { img: wineGatesImg, name: 'Wine Gates'             },
+  { img: pavoorImg,    name: 'Pavoor Education Trust' },
+  { img: nitkImg,      name: 'NITK'                   },
+  { img: milagresImg,  name: 'Milagres'               },
 ]
 
-/*
-  Desktop: 3-col × 5-row ghost grid per side (15 slots max).
-  Left: 13 logos  Right: 12 logos  Total: 25
-*/
-const LEFT_POSITIONS = [
-  [0, 0], [1, 0], [2, 0],
-  [0, 1], [1, 1],
-  [1, 2], [2, 2],
-  [0, 3], [2, 3],
-  [0, 4], [1, 4], [2, 4],
-  [2, 1],
-]
-const RIGHT_POSITIONS = [
-  [0, 0], [1, 0], [2, 0],
-  [0, 1], [1, 1], [2, 1],
-  [0, 2], [1, 2],
-  [1, 3], [2, 3],
-  [0, 4], [2, 4],
-]
+const ROW_ONE = LOGOS.slice(0, 13)
+const ROW_TWO = LOGOS.slice(13)
 
-const LEFT_LOGOS  = ALL_LOGOS.slice(0, 13)
-const RIGHT_LOGOS = ALL_LOGOS.slice(13, 25)
-
-function DesktopGrid({ logos, positions, side }) {
+function MarqueeRow({ logos, direction }) {
+  const doubled = [...logos, ...logos]
   return (
-    <div className={`cli-grid-wrap cli-grid-wrap--${side}`}>
-      <div className="cli-texture" aria-hidden="true" />
-      <div className="cli-grid">
-        {logos.map((logo, i) => {
-          const [col, row] = positions[i] || [0, 0]
-          return (
-            <div
-              key={i}
-              className="cli-logo-cell"
-              style={{
-                gridColumn: col + 1,
-                gridRow:    row + 1,
-                animationDelay: `${(col * 0.3 + row * 0.18).toFixed(2)}s`,
-              }}
-              title={logo.name}
-            >
-              <img src={logo.img} alt={logo.name} />
-            </div>
-          )
-        })}
+    <div className="cli-marquee-track">
+      <div className={`cli-marquee-inner cli-marquee-inner--${direction}`}>
+        {doubled.map((logo, i) => (
+          <div key={i} className="cli-logo-card" title={logo.name}>
+            <img src={logo.img} alt={logo.name} />
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -107,61 +75,37 @@ function DesktopGrid({ logos, positions, side }) {
 export default function Clients() {
   return (
     <section className="cli-section" id="clients">
+      <div className="cli-inner">
 
-      {/* ── Desktop layout: logos | center | logos ── */}
-      <div className="cli-inner cli-desktop">
-        <DesktopGrid logos={LEFT_LOGOS}  positions={LEFT_POSITIONS}  side="left"  />
-
-        <div className="cli-center">
+        <div className="cli-header">
           <div className="cli-badge">
             <span className="cli-badge-dot" />
-            Trusted By
+            Our Clients
           </div>
           <h2 className="cli-heading">
-            Trusted by <em>industry</em><br />leaders across India
+            Trusted by <em>Industry Leaders</em><br />Across India
           </h2>
           <p className="cli-sub">
-            Partnering with the best in hospitality, healthcare,
-            education, and beyond — delivering precision steel
-            solutions they rely on.
+            From premier hotels and hospitals to educational institutions and industrial giants — we deliver precision stainless steel solutions to names that demand the very best.
           </p>
         </div>
 
-        <DesktopGrid logos={RIGHT_LOGOS} positions={RIGHT_POSITIONS} side="right" />
-      </div>
-
-      {/* ── Mobile layout: center text + unified grid ── */}
-      <div className="cli-mobile">
-        <div className="cli-center">
-          <div className="cli-badge">
-            <span className="cli-badge-dot" />
-            Trusted By
-          </div>
-          <h2 className="cli-heading">
-            Trusted by <em>industry</em><br />leaders across India
-          </h2>
-          <p className="cli-sub">
-            Partnering with the best in hospitality, healthcare,
-            education, and beyond — delivering precision steel
-            solutions they rely on.
-          </p>
-        </div>
-
-        {/* Single unified grid — all 21 logos in 3 columns */}
-        <div className="cli-mobile-grid">
-          {ALL_LOGOS.map((logo, i) => (
-            <div
-              key={i}
-              className="cli-logo-cell"
-              style={{ animationDelay: `${(i * 0.07).toFixed(2)}s` }}
-              title={logo.name}
-            >
+        {/* Desktop: bordered grid */}
+        <div className="cli-grid">
+          {LOGOS.map((logo, i) => (
+            <div className="cli-cell" key={i} title={logo.name}>
               <img src={logo.img} alt={logo.name} />
             </div>
           ))}
         </div>
-      </div>
 
+        {/* Mobile: marquee rows */}
+        <div className="cli-marquee-wrap">
+          <MarqueeRow logos={ROW_ONE} direction="left" />
+          <MarqueeRow logos={ROW_TWO} direction="right" />
+        </div>
+
+      </div>
     </section>
   )
 }

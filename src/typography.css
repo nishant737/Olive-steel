@@ -1,0 +1,76 @@
+/* ═══════════════════════════════════════════════
+   GLOBAL TYPOGRAPHY SCALE — applied site-wide
+   ═══════════════════════════════════════════════ */
+:root {
+  /* Section badge / label (e.g. "CLIENTS", "HOW WE WORK", "Our Work") */
+  --fs-badge: 0.78rem;
+
+  /* Section main heading (h2) */
+  --fs-heading: clamp(2.4rem, 4vw, 3.4rem);
+
+  /* Section subtext / description below heading */
+  --fs-sub: 0.95rem;
+
+  /* Mobile overrides */
+  --fs-heading-mobile: clamp(2rem, 7vw, 2.6rem);
+}
+
+/* ── Heading scale — desktop ── */
+.about-heading,
+.cli-heading,
+.hww-heading,
+.proj-heading,
+.faq-heading,
+.svc-heading {
+  font-size: var(--fs-heading) !important;
+}
+
+/* ── Badge / label scale — desktop ── */
+.about-badge,
+.cli-label,
+.hww-badge,
+.proj-badge,
+.faq-badge,
+.svc-badge {
+  font-size: var(--fs-badge) !important;
+}
+
+/* ── Subtext scale — desktop ── */
+.about-desc,
+.cli-sub,
+.hww-sub,
+.proj-sub,
+.faq-sub,
+.svc-sub {
+  font-size: var(--fs-sub) !important;
+}
+
+/* ── Mobile: uniform heading size ── */
+@media (max-width: 768px) {
+  .about-heading,
+  .cli-heading,
+  .hww-heading,
+  .proj-heading,
+  .faq-heading,
+  .svc-heading {
+    font-size: var(--fs-heading-mobile) !important;
+  }
+
+  .about-badge,
+  .cli-label,
+  .hww-badge,
+  .proj-badge,
+  .faq-badge,
+  .svc-badge {
+    font-size: var(--fs-badge) !important;
+  }
+
+  .about-desc,
+  .cli-sub,
+  .hww-sub,
+  .proj-sub,
+  .faq-sub,
+  .svc-sub {
+    font-size: var(--fs-sub) !important;
+  }
+}

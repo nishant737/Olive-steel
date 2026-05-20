@@ -34,9 +34,17 @@
 .sn__logo-wrap { display: flex; align-items: center; }
 
 .sn__logo {
-  height: 52px;
+  width: 160px;
+  height: auto;
   object-fit: contain;
   display: block;
+  margin-top: 12px;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease;
+}
+
+.sn__logo:hover {
+  transform: scale(1.05);
+  opacity: 0.85;
 }
 
 /* ── Hamburger ── */
@@ -79,9 +87,10 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(300px, 100vw);
+  width: clamp(280px, 50vw, 520px);
   z-index: 600;
   background: #E0DCCC;
+  font-family: 'DM Sans', system-ui, sans-serif;
   display: flex;
   flex-direction: column;
   padding: 0 24px 36px;
@@ -111,7 +120,7 @@
 }
 
 .sn-drawer__logo {
-  height: 44px;
+  height: 56px;
   object-fit: contain;
 }
 
@@ -223,7 +232,29 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 480px) {
-  .sn { padding: 0 20px; }
-  .sn-drawer { width: 100vw; }
+@media (max-width: 960px) {
+  .sn {
+    height: 56px;
+    padding: 0 16px;
+    background: transparent;
+  }
+
+  .sn__logo {
+    width: auto;
+    height: 48px;
+    margin-top: 0;
+  }
+
+  .sn__burger {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-radius: 8px;
+  }
 }
+

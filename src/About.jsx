@@ -52,7 +52,26 @@ export default function About() {
   return (
     <section className="about-section" id="about" ref={sectionRef}>
 
-      {/* ── Left: image grid ── */}
+      {/* ── Top header (badge + heading) — order 1 on mobile ── */}
+      <div className="about-header">
+        <div className={`about-badge${visible ? ' about-badge--in' : ''}`}>
+          <span className="about-badge-dot" />
+          Welcome to Olive Steel
+        </div>
+        <h2 className="about-heading">
+          {['Crafting Steel', 'Into'].map((line, i) => (
+            <span
+              key={i}
+              className={`about-line${visible ? ' about-line--in' : ''}`}
+              style={{ transitionDelay: `${0.15 + i * 0.1}s` }}
+            >
+              {line}{i === 1 && <> <em>Excellence</em></>}
+            </span>
+          ))}
+        </h2>
+      </div>
+
+      {/* ── Image grid — order 2 on mobile ── */}
       <div className={`about-images${visible ? ' about-images--in' : ''}`}>
         <div className="about-img-tall">
           <img src={DUMMY_IMGS[0]} alt="Steel fabrication" />
@@ -67,28 +86,10 @@ export default function About() {
         </div>
       </div>
 
-      {/* ── Right: content ── */}
+      {/* ── Description + stats — order 3 on mobile ── */}
       <div className="about-content">
-
-        <div className={`about-badge${visible ? ' about-badge--in' : ''}`}>
-          <span className="about-badge-dot" />
-          Welcome to Olive Steel
-        </div>
-
-        <h2 className="about-heading">
-          {['Crafting Steel', 'Into'].map((line, i) => (
-            <span
-              key={i}
-              className={`about-line${visible ? ' about-line--in' : ''}`}
-              style={{ transitionDelay: `${0.15 + i * 0.1}s` }}
-            >
-              {line}{i === 1 && <> <em>Excellence</em></>}
-            </span>
-          ))}
-        </h2>
-
         <p className={`about-desc${visible ? ' about-desc--in' : ''}`}>
-         We are a leading provider of stainless-steel solutions in coastal Karnataka. In the last six years, we have been catering to the custom made stainless steel requirements of reputed enterprises of two key industries of our region namely hospitality and hospitals. Situated in the heart of Mangaluru’s Industrial estate, our state-of-the-art operations and commitment to process improvements and customer satisfaction have made us one among the top sought commercial kitchen and hospital equipment suppliers in the region.
+          We are a leading provider of stainless-steel solutions in coastal Karnataka. In the last six years, we have been catering to the custom made stainless steel requirements of reputed enterprises of two key industries of our region namely hospitality and hospitals. Situated in the heart of Mangaluru's Industrial estate, our state-of-the-art operations and commitment to process improvements and customer satisfaction have made us one among the top sought commercial kitchen and hospital equipment suppliers in the region.
         </p>
 
         <div className="about-stats">
@@ -105,8 +106,8 @@ export default function About() {
             </div>
           ))}
         </div>
-
       </div>
+
     </section>
   )
 }

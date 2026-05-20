@@ -11,11 +11,12 @@ const HEADINGS = [
   ['Quality.', 'Delivered on Time'],
 ]
 
-function Hero() {
+function Hero({ onReady }) {
   const [menuOpen,      setMenuOpen]      = useState(false)
   const [headIdx,       setHeadIdx]       = useState(0)
   const [phase,         setPhase]         = useState('in')
   const [contentReady,  setContentReady]  = useState(false)
+  const [navVisible,    setNavVisible]    = useState(false)
   const [videoEnded,    setVideoEnded]    = useState(false)
   const videoRef = useRef(null)
 
@@ -34,9 +35,11 @@ function Hero() {
       if (!vid.duration) return
       const remaining = vid.duration - vid.currentTime
       if (remaining < 2) {
-        const t = remaining / 2             // 1 → 0
+        const t = remaining / 2
         vid.playbackRate = Math.max(1.2, t * 2.5)
       }
+      // Reveal navbar in last 0.5s
+      if (remaining <= 0.5) setNavVisible(true)
     })
 
     vid.play().catch(() => revealContent())
@@ -45,8 +48,12 @@ function Hero() {
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   function revealContent() {
+    setNavVisible(true)
     setVideoEnded(true)
-    setTimeout(() => setContentReady(true), 200)
+    setTimeout(() => {
+      setContentReady(true)
+      onReady?.()
+    }, 200)
   }
 
   // Heading cycle — only after content is visible
@@ -91,7 +98,7 @@ function Hero() {
         <div className={`hero-overlay${contentReady ? ' hero-overlay--content' : ''}`} />
 
         {/* ── Navbar — always visible ── */}
-        <nav className={`nav${contentReady ? ' nav--visible' : ' nav--hidden'}`}>
+        <nav className={`nav${navVisible ? ' nav--visible' : ' nav--hidden'}`}>
           <img src={logo} alt="Olive Steel" className="nav-logo" />
 
           <div className="nav-pill">
@@ -134,7 +141,7 @@ function Hero() {
               durability, hygiene, and operational excellence.
             </p>
             <a href="#services" className={`hero-btn ${contentReady ? 'hero-el--visible' : 'hero-el'}`} style={{ '--d': '0.62s' }}>
-              Explore Services
+              Explore Products
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
@@ -155,15 +162,23 @@ function Hero() {
         </div>
 
         <nav className="mob-menu__nav">
-          {['about','services','projects','clients','faq'].map((id, i) => (
+          {[
+            { label: 'Home',     href: '#hero'     },
+            { label: 'About',    href: '#about'    },
+            { label: 'Services', href: '#services' },
+            { label: 'Projects', href: '#projects' },
+            { label: 'Clients',  href: '#clients'  },
+            { label: 'FAQ',      href: '#faq'      },
+            { label: 'Contact',  href: '#contact'  },
+          ].map(({ label, href }, i) => (
             <a
-              key={id}
-              href={`#${id}`}
+              key={href}
+              href={href}
               className="mob-menu__link"
-              style={{ animationDelay: menuOpen ? `${0.05 + i * 0.06}s` : '0s' }}
+              style={{ animationDelay: menuOpen ? `${0.04 + i * 0.055}s` : '0s' }}
               onClick={close}
             >
-              {id.charAt(0).toUpperCase() + id.slice(1)}
+              {label}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>

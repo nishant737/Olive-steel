@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Services.css'
 import img001 from './assets/fix01.jpeg'
 import img002 from './assets/fix02.jpeg'
-import img004 from './assets/fix03.jpeg'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -32,14 +31,6 @@ const SERVICES = [
       'Premium stainless steel kitchen appliances built for performance and longevity — from heavy-duty cooking ranges and exhaust hoods to food warmers and prep equipment crafted for professional kitchens.',
     img: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=900&q=80',
     tags: ['Cooking Ranges', 'Exhaust Hoods', 'Food Warmers'],
-  },
-  {
-    id: '04',
-    title: 'Modular Kitchen Units',
-    description:
-      'Pre-fabricated stainless steel modular kitchen systems designed for quick installation and seamless functionality — ideal for hotels, restaurants, and large-scale catering operations that demand consistency and hygiene.',
-    img: img004,
-    tags: ['Modular Design', 'Quick Install', 'Catering Ready'],
   },
 ]
 
@@ -128,7 +119,7 @@ export default function Services() {
 
           <div className="svc-list">
             {SERVICES.map((s, i) => (
-              <div key={s.id} ref={el => rowRefs.current[i] = el} className="svc-row">
+              <div key={s.id} ref={el => rowRefs.current[i] = el} className="svc-row" onClick={() => activateItem(i)} style={{ cursor: 'pointer' }}>
                 {/* Image shown only on mobile, above each row */}
                 <div className="svc-row__mob-img">
                   <img src={s.img} alt={s.title} />

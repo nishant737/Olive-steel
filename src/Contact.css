@@ -93,6 +93,14 @@
 }
 .ctc-detail-icon svg { width: 18px; height: 18px; }
 
+.ctc-detail-item > div {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .ctc-detail-label {
   display: block;
   font-size: 0.72rem;
@@ -100,7 +108,7 @@
   color: var(--muted, #8a9080);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .ctc-detail-value {
@@ -108,6 +116,8 @@
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--charcoal, #111310);
+  line-height: 1.45;
+  word-break: break-word;
 }
 
 /* ── Right form panel ── */
@@ -252,16 +262,22 @@
   .ctc-left {
     flex: unset;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  .ctc-heading { font-size: 2rem; }
-  .ctc-desc    { margin-bottom: 28px; }
+  .ctc-badge   { align-self: center; }
+  .ctc-heading { font-size: clamp(2rem, 7vw, 2.6rem); text-align: center; }
+  .ctc-desc    { margin-bottom: 28px; text-align: center; max-width: 100%; }
 
   .ctc-details { gap: 12px; }
 
   .ctc-detail-item {
-    padding: 12px 16px;
+    padding: 14px 16px;
     border-radius: 12px;
+    align-items: center;
   }
 
   .ctc-right {
