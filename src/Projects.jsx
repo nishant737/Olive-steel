@@ -1,95 +1,114 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import './Projects.css'
-import bainMarie from './assets/product/Bain Marie.png'
-import burner from './assets/product/Burner.png'
-import closedCabinet from './assets/product/Closed Cabinet with Glass doors.png'
-import endoscope from './assets/product/Endoscope-storge.png'
-import oilFryer from './assets/product/Oil Fryer.png'
-import sandwichGriller from './assets/product/Sandwich Griller.png'
-import sink from './assets/product/Sink.jpeg'
-import tawa from './assets/product/Tawa.jpeg'
-import undercounterChiller from './assets/product/Undercounter Chiller.png'
-import verticalChiller from './assets/product/Vertical Chiller.jpeg'
-import tandoorbatti from './assets/product/tandoorbatti.jpeg'
+
+import dressingTrolley from './assets/Dressing Trolley.jpeg'
+import petBathStation from './assets/Pet Bath Station.jpeg'
+import cadaverTank from './assets/Cadaver Tank.jpeg'
+import closedCabinet from './assets/Closed Cabinet with Glass doors.png'
+import sink from './assets/Sink.jpeg'
+import undercounterChiller from './assets/Undercounter Chiller.png'
+import pulverizer from './assets/Pulverizer.jpeg'
+import shawrmaCounter from './assets/Shawrma Counter.jpeg'
+import grinder from './assets/Grinder.jpeg'
+import exhaust from './assets/Exhaust.jpeg'
+import bainMarie from './assets/Bain Marie.png'
+import burner from './assets/Burner.png'
+import oilFryer from './assets/Oil Fryer.png'
+import sandwichGriller from './assets/Sandwich Griller.png'
+import tandoorbatti from './assets/tandoorbatti.jpeg'
+import tawa from './assets/Tawa.jpeg'
+import verticalChiller from './assets/Vertical Chiller.jpeg'
 
 const KITCHEN = [
   {
-    title: 'Burners',
-    desc: 'Heavy-duty commercial burners built for high-performance kitchen use.',
-    img: burner,
-  },
-  {
-    title: 'Tawa',
-    desc: 'Large flat-top stainless steel tawa ideal for high-volume cooking.',
-    img: tawa,
-  },
-  {
-    title: 'Tandoor',
-    desc: 'Traditional tandoor batti crafted with precision for authentic cooking.',
-    img: tandoorbatti,
-  },
-  {
     title: 'Bain Marie',
-    desc: 'Stainless steel bain marie for keeping food warm at the right temperature.',
+    desc: 'Commercial stainless steel bain marie for keeping food warm at precise serving temperatures.',
     img: bainMarie,
   },
   {
-    title: 'Refrigerators & Freezers',
-    desc: 'Undercounter and vertical chillers for storing perishables in commercial kitchens.',
+    title: 'Burner',
+    desc: 'High-output commercial burner built for rapid heating and consistent flame in busy kitchens.',
+    img: burner,
+  },
+  {
+    title: 'Closed Cabinet With Glass Door',
+    desc: 'Elegant steel cabinet with glass doors for organized display and easy-access storage.',
+    img: closedCabinet,
+  },
+  {
+    title: 'Exhaust',
+    desc: 'Heavy-duty kitchen exhaust system designed to maintain clean air and ventilation in commercial kitchens.',
+    img: exhaust,
+  },
+  {
+    title: 'Grinder',
+    desc: 'Commercial-grade stainless steel grinder engineered for durability and consistent performance.',
+    img: grinder,
+  },
+  {
+    title: 'Oil Fryer',
+    desc: 'Professional oil fryer with precise temperature control for high-volume commercial frying.',
+    img: oilFryer,
+  },
+  {
+    title: 'Pulverizer',
+    desc: 'Heavy-duty stainless steel pulverizer built for continuous commercial grinding operations.',
+    img: pulverizer,
+  },
+  {
+    title: 'Sandwich Griller',
+    desc: 'Stainless steel sandwich griller delivering even heat and perfect grill marks every time.',
+    img: sandwichGriller,
+  },
+  {
+    title: 'Shawrma Counter',
+    desc: 'Precision-crafted shawarma counter designed for high-volume street food and restaurant use.',
+    img: shawrmaCounter,
+    imgPos: 'top center',
+  },
+  {
+    title: 'Sink',
+    desc: 'Heavy-gauge stainless steel commercial sink built for rigorous kitchen washing demands.',
+    img: sink,
+  },
+  {
+    title: 'Tandoorbatti',
+    desc: 'Traditional tandoor batti crafted for authentic high-heat cooking in commercial kitchens.',
+    img: tandoorbatti,
+  },
+  {
+    title: 'Tawa',
+    desc: 'Large-format commercial tawa for flat breads, dosas, and high-volume griddle cooking.',
+    img: tawa,
+  },
+  {
+    title: 'Undercounter Chiller',
+    desc: 'Space-saving undercounter chiller with consistent cooling for commercial refrigeration needs.',
     img: undercounterChiller,
   },
   {
     title: 'Vertical Chiller',
-    desc: 'Full-height vertical chiller for storing perishables in commercial kitchens.',
+    desc: 'Full-height vertical chiller offering maximum storage capacity with energy-efficient cooling.',
     img: verticalChiller,
-  },
-  {
-    title: 'Display Counters',
-    desc: 'Elegant steel display counters with glass for organized storage and display.',
-    img: closedCabinet,
-  },
-  {
-    title: 'Washing Sinks',
-    desc: 'Deep stainless steel sinks built for heavy-duty commercial kitchen use.',
-    img: sink,
-  },
-  {
-    title: 'Sandwich Griller',
-    desc: 'Compact and efficient sandwich griller crafted in food-grade stainless steel.',
-    img: sandwichGriller,
-  },
-  {
-    title: 'Oil Fryer',
-    desc: 'Commercial-grade stainless steel oil fryer for continuous kitchen operations.',
-    img: oilFryer,
   },
 ]
 
 const HOSPITAL = [
   {
-    title: 'Endoscope Storage',
-    desc: 'Precision-built storage unit for safe and hygienic endoscope handling.',
-    img: endoscope,
+    title: 'Dressing Trolley',
+    desc: 'Stainless steel dressing trolley designed for hygienic and efficient wound care in clinical settings.',
+    img: dressingTrolley,
   },
   {
-    title: 'Closed Cabinet with Glass Doors',
-    desc: 'Elegant steel cabinet with glass doors for organized medical storage and display.',
-    img: closedCabinet,
+    title: 'Pet Bath Station',
+    desc: 'Purpose-built stainless steel pet bath station for safe and comfortable veterinary grooming.',
+    img: petBathStation,
+    imgPos: 'top center',
   },
   {
-    title: 'Instrument Trolleys',
-    desc: 'Stainless steel medical trolleys designed for safe and efficient instrument transport.',
-    img: sink,
-  },
-  {
-    title: 'Washing & Scrub Sinks',
-    desc: 'Hygienic stainless steel scrub sinks purpose-built for hospital environments.',
-    img: sink,
-  },
-  {
-    title: 'Storage Racks & Shelving',
-    desc: 'Heavy-duty stainless steel racks for sterile storage of medical supplies.',
-    img: undercounterChiller,
+    title: 'Cadaver Tank',
+    desc: 'Heavy-duty stainless steel cadaver tank engineered for secure and hygienic preservation.',
+    img: cadaverTank,
   },
 ]
 
@@ -197,7 +216,7 @@ export default function Projects() {
               className={`proj-card proj-card--${pos}`}
               onClick={() => pos !== 'active' && goTo(i)}
             >
-              <img src={p.img} alt={p.title} className="proj-card-img" />
+              <img src={p.img} alt={p.title} className="proj-card-img" style={p.imgPos ? { objectPosition: p.imgPos } : undefined} />
               <div className="proj-card-info">
                 <h3 className="proj-card-title">{p.title}</h3>
                 <p className="proj-card-desc">{p.desc}</p>
@@ -207,16 +226,18 @@ export default function Projects() {
         })}
       </div>
 
-      {/* Dots */}
-      <div className="proj-dots">
-        {PROJECTS.map((_, i) => (
-          <button
-            key={i}
-            className={`proj-dot${i === active ? ' proj-dot--active' : ''}`}
-            onClick={() => goTo(i)}
-            aria-label={`Project ${i + 1}`}
-          />
-        ))}
+      {/* Dots + counter */}
+      <div className="proj-nav">
+        <div className="proj-dots">
+          {PROJECTS.map((_, i) => (
+            <button
+              key={i}
+              className={`proj-dot${i === active ? ' proj-dot--active' : ''}`}
+              onClick={() => goTo(i)}
+              aria-label={`Project ${i + 1}`}
+            />
+          ))}
+        </div>
       </div>
 
     </section>
