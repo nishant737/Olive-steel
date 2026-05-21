@@ -13,7 +13,7 @@ const NAV = [
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" data-nav-dark>
 
       <div className="footer-top">
 

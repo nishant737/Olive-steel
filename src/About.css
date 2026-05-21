@@ -152,7 +152,7 @@
 .about-desc {
   font-size: 1rem;
   line-height: 1.7;
-  color: #555;
+  color: var(--charcoal, #111310);
   margin: 0 0 48px;
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
@@ -168,8 +168,9 @@
 
 /* ── Stats ── */
 .about-stats {
-  display: flex;
-  gap: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px 24px;
 }
 
 .about-stat {
@@ -187,7 +188,7 @@
 }
 
 .about-stat__value {
-  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
   font-weight: 500;
   color: #6b8c3e;
   line-height: 1;
@@ -227,7 +228,7 @@
   .about-badge   { align-self: center; }
   .about-heading { font-size: clamp(1.8rem, 7vw, 2.4rem); text-align: center; }
   .about-desc    { text-align: center; }
-  .about-stats   { justify-content: center; width: 100%; gap: 32px; }
+  .about-stats   { grid-template-columns: repeat(2, 1fr); gap: 24px 32px; width: 100%; justify-items: center; }
   .about-stat    { align-items: center; }
 
   .about-img-tall  { width: 160px; height: 320px; }

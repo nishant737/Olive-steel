@@ -63,7 +63,7 @@
 
 .cli-sub {
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.72);
   line-height: 1.7;
   margin: 0 auto;
   max-width: 520px;
@@ -90,6 +90,19 @@
   overflow: hidden;
   cursor: default;
   transition: background 0.28s ease;
+}
+
+.cli-grid--ready .cli-cell {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.cli-grid--in .cli-cell {
+  animation: cli-cell-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes cli-cell-in {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .cli-cell::after {

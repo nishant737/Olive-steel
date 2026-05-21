@@ -53,7 +53,7 @@
 
 .faq-sub {
   font-size: 1rem;
-  color: #666;
+  color: var(--charcoal, #111310);
   max-width: 420px;
   margin: 0 auto;
   line-height: 1.65;

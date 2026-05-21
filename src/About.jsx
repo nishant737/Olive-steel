@@ -7,9 +7,10 @@ import hero03 from './assets/hero3.jpg'
 const DUMMY_IMGS = [hero01, hero02, hero03]
 
 const STATS = [
-  { end: 500, suffix: '+', label: 'Projects' },
-  { end: 99,  suffix: '%', label: 'Satisfaction' },
-  { end: 200, suffix: '+', label: 'Clients' },
+  { end: 11,   suffix: '+', label: 'Years of Service' },
+  { end: 5000, suffix: '+', label: 'Projects' },
+  { end: 10000,suffix: '+', label: 'Clients' },
+  { end: 100,  suffix: '%', label: 'Satisfaction' },
 ]
 
 function useInView(threshold = 0.25) {
@@ -89,7 +90,7 @@ export default function About() {
       {/* ── Description + stats — order 3 on mobile ── */}
       <div className="about-content">
         <p className={`about-desc${visible ? ' about-desc--in' : ''}`}>
-          We are a leading provider of stainless-steel solutions in coastal Karnataka. In the last six years, we have been catering to the custom made stainless steel requirements of reputed enterprises of two key industries of our region namely hospitality and hospitals. Situated in the heart of Mangaluru's Industrial estate, our state-of-the-art operations and commitment to process improvements and customer satisfaction have made us one among the top sought commercial kitchen and hospital equipment suppliers in the region.
+         We are a leading provider of stainless-steel solutions in coastal Karnataka. In the last 11  years, we have been cafering to the custom made stainless steel requirements of reputed enterprises of two key industries of our region namely hospitality and hospitals. Situated in the heart of Mangaluru's Industrial estate, our state-of-the-art operations and commitment to process improvements and customer satisfaction have made us one among the top sought commercial kitchen and hospital equipment suppliers in the region.
         </p>
 
         <div className="about-stats">

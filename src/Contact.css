@@ -53,7 +53,7 @@
 
 .ctc-desc {
   font-size: 0.97rem;
-  color: var(--muted, #8a9080);
+  color: var(--charcoal, #111310);
   line-height: 1.7;
   margin: 0 0 48px;
   max-width: 360px;

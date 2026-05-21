@@ -79,7 +79,7 @@ function Hero({ onReady }) {
 
   return (
     <>
-      <div className="hero-root" id="hero">
+      <div className="hero-root" id="hero" data-nav-dark>
 
         {/* ── Video background ── */}
         <video

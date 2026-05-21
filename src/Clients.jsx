@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import './Clients.css'
 
 import nitteImg      from './assets/nitte-logo.jpeg'
@@ -73,8 +74,27 @@ function MarqueeRow({ logos, direction }) {
 }
 
 export default function Clients() {
+  const gridRef = useRef(null)
+
+  useEffect(() => {
+    const grid = gridRef.current
+    if (!grid) return
+    grid.classList.add('cli-grid--ready')
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          grid.classList.add('cli-grid--in')
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.1 }
+    )
+    obs.observe(grid)
+    return () => obs.disconnect()
+  }, [])
+
   return (
-    <section className="cli-section" id="clients">
+    <section className="cli-section" id="clients" data-nav-dark>
       <div className="cli-inner">
 
         <div className="cli-header">
@@ -91,9 +111,14 @@ export default function Clients() {
         </div>
 
         {/* Desktop: bordered grid */}
-        <div className="cli-grid">
+        <div className="cli-grid" ref={gridRef}>
           {LOGOS.map((logo, i) => (
-            <div className="cli-cell" key={i} title={logo.name}>
+            <div
+              className="cli-cell"
+              key={i}
+              title={logo.name}
+              style={{ animationDelay: `${i * 0.04}s` }}
+            >
               <img src={logo.img} alt={logo.name} />
             </div>
           ))}

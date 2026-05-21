@@ -2,22 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Services.css'
-import img001 from './assets/fix01.jpeg'
+import img001 from './assets/steel.jpg'
 import img002 from './assets/fix02.jpeg'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const SERVICES = [
-  {
-    id: '01',
-    title: 'Hospital Kitchen Appliances',
-    description:
-      'Hygienic stainless steel kitchen appliances and equipment purpose-built for hospitals and healthcare facilities — designed to meet strict sanitation standards while ensuring safe, efficient food preparation for patients and staff.',
-    img: img001,
-    tags: ['Healthcare Grade', 'Hygienic Design', 'Custom Build'],
-  },
-  {
-    id: '02',
+{
+
     title: 'Commercial Kitchens',
     description:
       'Full-suite stainless steel kitchen solutions — countertops, sinks, shelving, and prep stations — engineered for hygiene and heavy daily use.',
@@ -25,13 +17,15 @@ const SERVICES = [
     tags: ['Worktops', 'Sinks & Drains', 'Shelving'],
   },
   {
-    id: '03',
-    title: 'Kitchen Appliances',
+
+    title: 'Stainless Steel Hospital Equipments',
     description:
-      'Premium stainless steel kitchen appliances built for performance and longevity — from heavy-duty cooking ranges and exhaust hoods to food warmers and prep equipment crafted for professional kitchens.',
-    img: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=900&q=80',
-    tags: ['Cooking Ranges', 'Exhaust Hoods', 'Food Warmers'],
+      'Hygienic stainless steel kitchen appliances and equipment purpose-built for hospitals and healthcare facilities — designed to meet strict sanitation standards while ensuring safe, efficient food preparation for patients and staff.',
+    img: img001,
+    tags: ['Healthcare Grade', 'Hygienic Design', 'Custom Build'],
   },
+
+
 ]
 
 const N = SERVICES.length

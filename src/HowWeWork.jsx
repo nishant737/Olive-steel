@@ -92,7 +92,7 @@ export default function HowWeWork() {
         <div className="hww-header">
           <div className="hww-badge">
             <span className="hww-badge-dot" />
-            How We Work
+            Service & Support
           </div>
           <h2 className="hww-heading">From concept to <em>completion</em></h2>
           <p className="hww-sub">

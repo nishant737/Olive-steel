@@ -56,7 +56,7 @@
 
 .proj-sub {
   font-size: 0.9rem;
-  color: var(--muted, #8a9080);
+  color: var(--charcoal, #111310);
   margin: 0 auto;
   max-width: 520px;
 }

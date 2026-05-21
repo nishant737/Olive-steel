@@ -4,6 +4,15 @@ import './Projects.css'
 import dressingTrolley from './assets/Dressing Trolley.jpeg'
 import petBathStation from './assets/Pet Bath Station.jpeg'
 import cadaverTank from './assets/Cadaver Tank.jpeg'
+import catheterWashSink from './assets/Catheter Wash Sink.jpeg'
+import crashCart from './assets/Crash Cart.jpeg'
+import disectionTable from './assets/Disection Table.jpeg'
+import instrumentTrolley from './assets/Instrument Trolley.jpeg'
+import kneeOperatedSink from './assets/Knee Operated Sink.jpeg'
+import medicalUtilityTrolley from './assets/Medical Utility Trolley.jpeg'
+import sensorScrubSink from './assets/Sensor Operated Scrub Sink.jpeg'
+import sinkHighBacksplash from './assets/Sink With High Backsplash.jpeg'
+import surgicalScrubSink from './assets/Surgical Scrub Sink.jpeg'
 import closedCabinet from './assets/Closed Cabinet with Glass doors.png'
 import sink from './assets/Sink.jpeg'
 import undercounterChiller from './assets/Undercounter Chiller.png'
@@ -110,11 +119,57 @@ const HOSPITAL = [
     desc: 'Heavy-duty stainless steel cadaver tank engineered for secure and hygienic preservation.',
     img: cadaverTank,
   },
+  {
+    title: 'Catheter Wash Sink',
+    desc: 'Stainless steel catheter wash sink designed for safe and hygienic cleaning of medical catheters in healthcare settings.',
+    img: catheterWashSink,
+    imgPos: 'top center',
+  },
+  {
+    title: 'Crash Cart',
+    desc: 'Heavy-duty stainless steel crash cart built for rapid emergency response, with secure lockable drawers and smooth mobility.',
+    img: crashCart,
+  },
+  {
+    title: 'Disection Table',
+    desc: 'Precision-crafted stainless steel dissection table engineered for sterile, efficient use in medical and laboratory environments.',
+    img: disectionTable,
+  },
+  {
+    title: 'Instrument Trolley',
+    desc: 'Durable stainless steel instrument trolley offering organized, hygienic storage and easy mobility across clinical areas.',
+    img: instrumentTrolley,
+  },
+  {
+    title: 'Knee Operated Sink',
+    desc: 'Hands-free knee-operated sink built for infection control, enabling hygienic handwashing without touch in clinical environments.',
+    img: kneeOperatedSink,
+  },
+  {
+    title: 'Medical Utility Trolley',
+    desc: 'Versatile stainless steel medical utility trolley designed for efficient transport of supplies and equipment across hospital departments.',
+    img: medicalUtilityTrolley,
+  },
+  {
+    title: 'Sensor Operated Scrub Sink',
+    desc: 'Touchless sensor-operated scrub sink for hands-free surgical scrubbing, maintaining strict hygiene protocols in OT areas.',
+    img: sensorScrubSink,
+  },
+  {
+    title: 'Sink With High Backsplash',
+    desc: 'Heavy-gauge stainless steel sink with a high backsplash, ideal for preventing wall contamination in clinical wash areas.',
+    img: sinkHighBacksplash,
+  },
+  {
+    title: 'Surgical Scrub Sink',
+    desc: 'Purpose-built surgical scrub sink engineered for thorough pre-operative hand and arm scrubbing in sterile environments.',
+    img: surgicalScrubSink,
+  },
 ]
 
 const TABS = [
-  { key: 'kitchen',  label: 'Kitchen Appliances',  data: KITCHEN  },
-  { key: 'hospital', label: 'Hospital Appliances',  data: HOSPITAL },
+  { key: 'kitchen',  label: 'Kitchen Equipments',  data: KITCHEN  },
+  { key: 'hospital', label: 'Hospital Equipments',  data: HOSPITAL },
 ]
 
 export default function Projects() {
