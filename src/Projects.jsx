@@ -100,6 +100,11 @@ const KITCHEN = [
 
 const HOSPITAL = [
   {
+    title: 'Endoscope Storage Unit',
+    desc: 'Dedicated stainless steel endoscope storage unit designed for safe, hygienic, and organized storage of endoscopic equipment.',
+    img: endoscopeStorageUnit,
+  },
+  {
     title: 'Dressing Trolley',
     desc: 'Stainless steel dressing trolley designed for hygienic and efficient wound care in clinical settings.',
     img: dressingTrolley,
@@ -127,7 +132,7 @@ const HOSPITAL = [
     img: crashCart,
   },
   {
-    title: 'Disection Table',
+    title: 'Dissection Table',
     desc: 'Precision-crafted stainless steel dissection table engineered for sterile, efficient use in medical and laboratory environments.',
     img: disectionTable,
   },
@@ -165,11 +170,6 @@ const HOSPITAL = [
     title: 'Closed Cabinet With Glass Door',
     desc: 'Elegant steel cabinet with glass doors for organized display and easy-access storage.',
     img: closedCabinet,
-  },
-  {
-    title: 'Endoscope Storage Unit',
-    desc: 'Dedicated stainless steel endoscope storage unit designed for safe, hygienic, and organized storage of endoscopic equipment.',
-    img: endoscopeStorageUnit,
   },
 ]
 
@@ -220,6 +220,16 @@ export default function Projects() {
     setTab(key)
   }
 
+  function handleKeyDown(e) {
+    if (e.key === 'ArrowRight') { pausedRef.current = false; goTo(active + 1) }
+    else if (e.key === 'ArrowLeft') { pausedRef.current = false; goTo(active - 1 + N) }
+    else if (e.key === 'Tab' && !e.shiftKey) {
+      const currentIdx = TABS.findIndex(t => t.key === tab)
+      const next = TABS[(currentIdx + 1) % TABS.length]
+      if (next.key !== tab) { e.preventDefault(); handleTab(next.key) }
+    }
+  }
+
   function getPos(i) {
     const diff = ((i - active) % N + N) % N
     if (diff === 0) return 'active'
@@ -231,7 +241,7 @@ export default function Projects() {
   }
 
   return (
-    <section className="proj-section" id="projects">
+    <section className="proj-section" id="projects" tabIndex={-1} onKeyDown={handleKeyDown}>
 
       {/* Header */}
       <div className="proj-header">
