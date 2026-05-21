@@ -20,7 +20,7 @@
 
 /* Spacer — shorter = faster transitions per scroll unit */
 .svc-spacer {
-  height: 150vh;
+  height: 60vh;
 }
 
 /* ── Header ── */
@@ -145,7 +145,8 @@
 .svc-row--active .svc-row__underline { width: 100%; }
 
 .svc-row__desc {
-  font-size: 0.86rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--muted, #8a9080);
   line-height: 1.65;
   margin: 0;
@@ -154,7 +155,7 @@
   opacity: 0;
   transition: max-height 0.22s ease, opacity 0.2s ease, margin 0.2s ease;
 }
-.svc-row--active .svc-row__desc { max-height: 90px; opacity: 1; margin: 8px 0 12px; }
+.svc-row--active .svc-row__desc { max-height: 160px; opacity: 1; margin: 8px 0 12px; }
 
 .svc-row__tags {
   display: flex;

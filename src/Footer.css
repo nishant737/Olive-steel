@@ -20,7 +20,7 @@
 .footer-brand { display: flex; flex-direction: column; gap: 16px; }
 
 .footer-logo {
-  height: 56px;
+  height: 100px;
   width: auto;
   object-fit: contain;
   object-position: left;

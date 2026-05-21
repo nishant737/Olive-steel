@@ -297,17 +297,29 @@ export default function Projects() {
         })}
       </div>
 
-      {/* Dots + counter */}
+      {/* Dots + arrows */}
       <div className="proj-nav">
-        <div className="proj-dots">
-          {PROJECTS.map((_, i) => (
-            <button
-              key={i}
-              className={`proj-dot${i === active ? ' proj-dot--active' : ''}`}
-              onClick={() => goTo(i)}
-              aria-label={`Project ${i + 1}`}
-            />
-          ))}
+        <div className="proj-nav-row">
+          <button className="proj-arrow" onClick={() => goTo(active - 1 + N)} aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+          <div className="proj-dots">
+            {PROJECTS.map((_, i) => (
+              <button
+                key={i}
+                className={`proj-dot${i === active ? ' proj-dot--active' : ''}`}
+                onClick={() => goTo(i)}
+                aria-label={`Project ${i + 1}`}
+              />
+            ))}
+          </div>
+          <button className="proj-arrow" onClick={() => goTo(active + 1)} aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
         </div>
       </div>
 
