@@ -32,6 +32,12 @@ const STEPS = [
     description:
       'We handle end-to-end logistics and on-site installation, ensuring a seamless fit and leaving your space ready for operation — on time, every time.',
   },
+  {
+    number: '06',
+    title: 'Service & Support',
+    description:
+      'Our commitment doesn\'t end at installation. We provide ongoing service and support to ensure your steel solutions continue to perform at their best — long after the project is complete.',
+  },
 ]
 
 export default function HowWeWork() {
@@ -92,7 +98,7 @@ export default function HowWeWork() {
         <div className="hww-header">
           <div className="hww-badge">
             <span className="hww-badge-dot" />
-            Service & Support
+           How We Work
           </div>
           <h2 className="hww-heading">From concept to <em>completion</em></h2>
           <p className="hww-sub">

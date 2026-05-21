@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import './About.css'
-import hero01 from './assets/hero01.jpg'
-import hero02 from './assets/hero 02.jpg'
-import hero03 from './assets/hero3.jpg'
+import hero01 from './assets/my03.jpeg'
+import hero02 from './assets/my02.jpeg'
+import hero03 from './assets/my01.jpeg'
 
 const DUMMY_IMGS = [hero01, hero02, hero03]
 

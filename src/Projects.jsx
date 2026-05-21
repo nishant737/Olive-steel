@@ -14,6 +14,7 @@ import sensorScrubSink from './assets/Sensor Operated Scrub Sink.jpeg'
 import sinkHighBacksplash from './assets/Sink With High Backsplash.jpeg'
 import surgicalScrubSink from './assets/Surgical Scrub Sink.jpeg'
 import closedCabinet from './assets/Closed Cabinet with Glass doors.png'
+import endoscopeStorageUnit from './assets/endoscope storage unit.png'
 import sink from './assets/Sink.jpeg'
 import undercounterChiller from './assets/Undercounter Chiller.png'
 import pulverizer from './assets/Pulverizer.jpeg'
@@ -38,11 +39,6 @@ const KITCHEN = [
     title: 'Burner',
     desc: 'High-output commercial burner built for rapid heating and consistent flame in busy kitchens.',
     img: burner,
-  },
-  {
-    title: 'Closed Cabinet With Glass Door',
-    desc: 'Elegant steel cabinet with glass doors for organized display and easy-access storage.',
-    img: closedCabinet,
   },
   {
     title: 'Exhaust',
@@ -70,7 +66,7 @@ const KITCHEN = [
     img: sandwichGriller,
   },
   {
-    title: 'Shawrma Counter',
+    title: 'Shawarma Counter',
     desc: 'Precision-crafted shawarma counter designed for high-volume street food and restaurant use.',
     img: shawrmaCounter,
     imgPos: 'top center',
@@ -164,6 +160,16 @@ const HOSPITAL = [
     title: 'Surgical Scrub Sink',
     desc: 'Purpose-built surgical scrub sink engineered for thorough pre-operative hand and arm scrubbing in sterile environments.',
     img: surgicalScrubSink,
+  },
+  {
+    title: 'Closed Cabinet With Glass Door',
+    desc: 'Elegant steel cabinet with glass doors for organized display and easy-access storage.',
+    img: closedCabinet,
+  },
+  {
+    title: 'Endoscope Storage Unit',
+    desc: 'Dedicated stainless steel endoscope storage unit designed for safe, hygienic, and organized storage of endoscopic equipment.',
+    img: endoscopeStorageUnit,
   },
 ]
 
