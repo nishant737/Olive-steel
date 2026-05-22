@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import logo from './assets/finallogoolive.png'
+import logo from './assets/Olive.png'
 import './Navbar.css'
 
 const LINKS = [

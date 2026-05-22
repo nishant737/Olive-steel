@@ -20,14 +20,14 @@
 .footer-brand { display: flex; flex-direction: column; gap: 16px; }
 
 .footer-logo {
-  height: 100px;
+  height: 180px;
   width: auto;
   object-fit: contain;
   object-position: left;
   align-self: flex-start;
-  margin-left: -10px;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
+  margin-left: 10px;
+  margin-bottom: 4px;
+  opacity: 1;
 }
 
 .footer-tagline {

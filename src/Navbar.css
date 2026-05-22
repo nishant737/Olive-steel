@@ -46,7 +46,7 @@
 .sn__logo-wrap { display: flex; align-items: center; }
 
 .sn__logo {
-  width: 180px;
+  width: 150px;
   height: auto;
   object-fit: contain;
   display: block;

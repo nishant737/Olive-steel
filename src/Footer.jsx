@@ -1,4 +1,4 @@
-import logo from './assets/finallogoolive.png'
+import logo from './assets/whitelogo.png'
 import './Footer.css'
 
 const NAV = [
