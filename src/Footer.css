@@ -153,10 +153,12 @@
   .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
   .footer-map-col { grid-column: 1 / -1; }
   .footer-map-col iframe { height: 180px; }
+  .footer-logo { height: 100px; margin-left: 0; }
 }
 
 @media (max-width: 480px) {
   .footer-top { grid-template-columns: 1fr; }
   .footer-map-col iframe { height: 160px; }
+  .footer-logo { height: 90px; margin-left: 0; }
 }
 

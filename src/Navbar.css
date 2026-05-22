@@ -250,12 +250,12 @@
 @media (max-width: 960px) {
   .sn {
     height: 56px;
-    padding: 0 16px;
+    padding: 0 12px;
   }
 
   .sn__logo {
-    width: auto;
-    height: 48px;
+    width: 120px;
+    height: auto;
     margin-top: 0;
   }
 
