@@ -2,11 +2,26 @@ html {
   scroll-behavior: smooth;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU-accelerated video */
+video {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Prevent layout thrash on images */
+img {
+  content-visibility: auto;
 }
 
 @media (prefers-color-scheme: dark) {

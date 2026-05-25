@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import logo from './assets/finallogoolive.png'
 import heroBg from './assets/nero.jpeg'
-import heroVideo from './assets/hero section video 01.mov'
+import heroVideo from './assets/hero section video 01.mp4'
 import './Hero.css'
 
 const HEADINGS = [
@@ -88,7 +88,7 @@ function Hero({ onReady }) {
           src={heroVideo}
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           onEnded={revealContent}
           poster={heroBg}
         />

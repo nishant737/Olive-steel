@@ -116,7 +116,7 @@ export default function Services() {
               <div key={s.id} ref={el => rowRefs.current[i] = el} className="svc-row" onClick={() => activateItem(i)} style={{ cursor: 'pointer' }}>
                 {/* Image shown only on mobile, above each row */}
                 <div className="svc-row__mob-img">
-                  <img src={s.img} alt={s.title} />
+                  <img src={s.img} alt={s.title} loading="lazy" decoding="async" />
                   <span className="svc-img-counter">
                     {String(i + 1).padStart(2, '0')} / {String(N).padStart(2, '0')}
                   </span>
@@ -145,6 +145,8 @@ export default function Services() {
                 src={s.img}
                 alt={s.title}
                 className="svc-img"
+                loading="lazy"
+                decoding="async"
               />
             ))}
             <div className="svc-img-footer">

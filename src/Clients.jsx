@@ -65,7 +65,7 @@ function MarqueeRow({ logos, direction }) {
       <div className={`cli-marquee-inner cli-marquee-inner--${direction}`}>
         {doubled.map((logo, i) => (
           <div key={i} className="cli-logo-card" title={logo.name}>
-            <img src={logo.img} alt={logo.name} />
+            <img src={logo.img} alt={logo.name} loading="lazy" decoding="async" />
           </div>
         ))}
       </div>
@@ -119,7 +119,7 @@ export default function Clients() {
               title={logo.name}
               style={{ animationDelay: `${i * 0.04}s` }}
             >
-              <img src={logo.img} alt={logo.name} />
+              <img src={logo.img} alt={logo.name} loading="lazy" decoding="async" />
             </div>
           ))}
         </div>

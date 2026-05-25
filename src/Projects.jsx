@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import './Projects.css'
 
 import dressingTrolley from './assets/Dressing Trolley.jpeg'
-import petBathStation from './assets/Pet Bath Station.jpeg'
 import cadaverTank from './assets/Cadaver Tank.jpeg'
 import catheterWashSink from './assets/Catheter Wash Sink.jpeg'
 import crashCart from './assets/Crash Cart.jpeg'
@@ -108,12 +107,6 @@ const HOSPITAL = [
     title: 'Dressing Trolley',
     desc: 'Stainless steel dressing trolley designed for hygienic and efficient wound care in clinical settings.',
     img: dressingTrolley,
-  },
-  {
-    title: 'Pet Bath Station',
-    desc: 'Purpose-built stainless steel pet bath station for safe and comfortable veterinary grooming.',
-    img: petBathStation,
-    imgPos: 'top center',
   },
   {
     title: 'Cadaver Tank',

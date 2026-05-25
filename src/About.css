@@ -229,7 +229,16 @@
   .about-badge   { align-self: center; }
   .about-heading { font-size: clamp(1.8rem, 7vw, 2.4rem); text-align: center; }
   .about-desc    { text-align: center; }
-  .about-stats   { grid-template-columns: repeat(2, 1fr); gap: 24px 32px; width: 100%; justify-items: center; }
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+    width: 100%;
+    justify-items: center;
+    border: 1.5px solid #6b8c3e;
+    border-radius: 18px;
+    padding: 24px 16px;
+    background: rgba(107, 140, 62, 0.04);
+  }
   .about-stat    { align-items: center; }
 
   .about-img-tall  { width: 160px; height: 320px; }

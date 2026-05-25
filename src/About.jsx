@@ -75,14 +75,14 @@ export default function About() {
       {/* ── Image grid — order 2 on mobile ── */}
       <div className={`about-images${visible ? ' about-images--in' : ''}`}>
         <div className="about-img-tall">
-          <img src={DUMMY_IMGS[0]} alt="Steel fabrication" />
+          <img src={DUMMY_IMGS[0]} alt="Steel fabrication" loading="lazy" decoding="async" />
         </div>
         <div className="about-img-stack">
           <div className="about-img-small">
-            <img src={DUMMY_IMGS[1]} alt="Commercial kitchen" />
+            <img src={DUMMY_IMGS[1]} alt="Commercial kitchen" loading="lazy" decoding="async" />
           </div>
           <div className="about-img-small">
-            <img src={DUMMY_IMGS[2]} alt="Steel products" />
+            <img src={DUMMY_IMGS[2]} alt="Steel products" loading="lazy" decoding="async" />
           </div>
         </div>
       </div>
