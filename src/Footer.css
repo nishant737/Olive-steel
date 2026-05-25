@@ -125,6 +125,15 @@
   letter-spacing: 0.02em;
 }
 
+.footer-managed {
+  color: rgba(255,255,255,0.25);
+}
+
+.footer-managed strong {
+  color: rgba(255,255,255,0.45);
+  font-weight: 600;
+}
+
 .footer-map-col iframe {
   width: 100%;
   height: 220px;

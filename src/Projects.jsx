@@ -280,7 +280,7 @@ export default function Projects() {
               className={`proj-card proj-card--${pos}`}
               onClick={() => pos !== 'active' && goTo(i)}
             >
-              <img src={p.img} alt={p.title} className="proj-card-img" style={p.imgPos ? { objectPosition: p.imgPos } : undefined} />
+              <img src={p.img} alt={p.title} className="proj-card-img" width="400" height="300" loading="lazy" decoding="async" style={p.imgPos ? { objectPosition: p.imgPos } : undefined} />
               <div className="proj-card-info">
                 <h3 className="proj-card-title">{p.title}</h3>
                 <p className="proj-card-desc">{p.desc}</p>

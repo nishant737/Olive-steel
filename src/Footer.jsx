@@ -19,7 +19,7 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="footer-brand">
-          <img src={logo} alt="Olive Steel" className="footer-logo" />
+          <img src={logo} alt="Olive Steel" className="footer-logo" width="260" height="180" loading="lazy" />
           <p className="footer-tagline">
             Precision-engineered stainless steel solutions built to outlast the industry standard.
           </p>
@@ -99,6 +99,8 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Olive Steel. All rights reserved.</span>
+        
+        <span className="footer-managed">Managed by <strong>Yatharth</strong></span>
         <span>Crafted with precision.</span>
       </div>
 

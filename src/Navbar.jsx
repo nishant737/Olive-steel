@@ -36,7 +36,7 @@ export default function Navbar() {
       <header className={`sn${visible ? ' sn--visible' : ''}`}>
         {/* Logo */}
         <a href="#" className="sn__logo-wrap">
-          <img src={logo} alt="Olive Steel" className="sn__logo" />
+          <img src={logo} alt="Olive Steel" className="sn__logo" width="150" height="50" loading="eager" />
         </a>
 
         {/* Hamburger — always visible */}
@@ -53,7 +53,7 @@ export default function Navbar() {
       {/* Slide-in drawer */}
       <div className={`sn-drawer${menuOpen ? ' sn-drawer--open' : ''}`} aria-hidden={!menuOpen}>
         <div className="sn-drawer__head">
-          <img src={logo} alt="Olive Steel" className="sn-drawer__logo" />
+          <img src={logo} alt="Olive Steel" className="sn-drawer__logo" width="160" height="56" loading="lazy" />
           <button className="sn-drawer__close" onClick={close} aria-label="Close menu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>

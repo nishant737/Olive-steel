@@ -99,7 +99,7 @@ function Hero({ onReady }) {
 
         {/* ── Navbar — always visible ── */}
         <nav className={`nav${navVisible ? ' nav--visible' : ' nav--hidden'}`}>
-          <img src={logo} alt="Olive Steel" className="nav-logo" />
+          <img src={logo} alt="Olive Steel" className="nav-logo" width="180" height="60" loading="eager" />
 
           <div className="nav-pill">
             <a href="#about">About</a>
@@ -153,7 +153,7 @@ function Hero({ onReady }) {
       {/* ── Mobile full-screen overlay menu ── */}
       <div className={`mob-menu${menuOpen ? ' mob-menu--open' : ''}`} aria-hidden={!menuOpen}>
         <div className="mob-menu__header">
-          <img src={logo} alt="Olive Steel" className="mob-menu__logo" />
+          <img src={logo} alt="Olive Steel" className="mob-menu__logo" width="160" height="52" loading="lazy" />
           <button className="mob-menu__close" onClick={close} aria-label="Close menu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>

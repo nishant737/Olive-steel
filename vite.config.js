@@ -1,17 +1,20 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import viteImagemin from 'vite-plugin-imagemin'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 export default defineConfig({
+  server: {
+    fs: {
+      allow: ['..'],
+    },
+  },
   plugins: [
     react(),
-    viteImagemin({
-      gifsicle: { optimizationLevel: 7 },
-      optipng:  { optimizationLevel: 7 },
-      mozjpeg:  { quality: 72 },
-      pngquant: { quality: [0.65, 0.80], speed: 4 },
-      svgo:     { plugins: [{ name: 'removeViewBox' }] },
-      webp:     { quality: 72 },
+    ViteImageOptimizer({
+      jpg: { quality: 75 },
+      jpeg: { quality: 75 },
+      png: { quality: 75 },
+      webp: { quality: 75 },
     }),
   ],
 })
