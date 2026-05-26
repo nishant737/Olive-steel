@@ -20,7 +20,7 @@ export default function Contact() {
 
   const submit = async e => {
     e.preventDefault()
-    if (!captchaToken) return
+    if (RECAPTCHA_KEY && !captchaToken) return
 
     setStatus('sending')
     try {
@@ -43,7 +43,7 @@ export default function Contact() {
     }
   }
 
-  const canSubmit = captchaToken && form.name && form.email && form.message
+  const canSubmit = (!RECAPTCHA_KEY || captchaToken) && form.name && form.email && form.message
 
   return (
     <section className="ctc-section" id="contact">
@@ -127,14 +127,16 @@ export default function Contact() {
               <textarea id="message" name="message" rows={5} placeholder="Describe your project, materials needed, timeline…" value={form.message} onChange={handle} required />
             </div>
 
-            <div className="ctc-captcha">
-              <ReCAPTCHA
-                ref={recaptchaRef}
-                sitekey={RECAPTCHA_KEY}
-                onChange={token => setCaptchaToken(token)}
-                onExpired={() => setCaptchaToken(null)}
-              />
-            </div>
+            {RECAPTCHA_KEY && (
+              <div className="ctc-captcha">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={RECAPTCHA_KEY}
+                  onChange={token => setCaptchaToken(token)}
+                  onExpired={() => setCaptchaToken(null)}
+                />
+              </div>
+            )}
 
             {status === 'error' && (
               <p className="ctc-error">Something went wrong. Please try again.</p>
