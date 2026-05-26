@@ -189,8 +189,8 @@
 .proj-card-info {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  padding: 64px 20px 22px;
-  background: linear-gradient(to top, rgba(10,12,10,0.92) 0%, rgba(10,12,10,0.4) 60%, transparent 100%);
+  padding: 40px 20px 18px;
+  background: linear-gradient(to top, rgba(10,12,10,0.88) 0%, rgba(10,12,10,0.3) 70%, transparent 100%);
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.35s ease, transform 0.35s ease;
@@ -282,9 +282,8 @@
   .proj-card--far-next { opacity: 0; pointer-events: none; }
   .proj-card--far-prev { opacity: 0; pointer-events: none; }
 
-  .proj-card-info { padding: 48px 16px 18px; }
-  .proj-card-title { font-size: 1.1rem; }
-  .proj-card-desc  { font-size: 0.7rem; }
+  .proj-card-info  { padding: 32px 16px 16px; }
+  .proj-card-title { font-size: 1.1rem; font-weight: 700; }
 }
 
 /* ── Nav (dots + counter) ── */

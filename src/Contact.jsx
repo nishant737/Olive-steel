@@ -1,17 +1,49 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import emailjs from '@emailjs/browser'
+import ReCAPTCHA from 'react-google-recaptcha'
 import './Contact.css'
 
+const SERVICE_ID   = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const TEMPLATE_ID  = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const PUBLIC_KEY   = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+const RECAPTCHA_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY
+
+const EMPTY = { name: '', email: '', message: '' }
+
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [form,         setForm]         = useState(EMPTY)
+  const [captchaToken, setCaptchaToken] = useState(null)
+  const [status,       setStatus]       = useState('idle') // idle | sending | sent | error
+  const recaptchaRef = useRef(null)
 
   const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }))
 
-  const submit = e => {
+  const submit = async e => {
     e.preventDefault()
-    // TODO: wire to backend / email service
-    setSent(true)
+    if (!captchaToken) return
+
+    setStatus('sending')
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          user_name:  form.name,
+          user_email: form.email,
+          message:    form.message,
+        },
+        PUBLIC_KEY
+      )
+      setStatus('sent')
+      setForm(EMPTY)
+      setCaptchaToken(null)
+      recaptchaRef.current?.reset()
+    } catch {
+      setStatus('error')
+    }
   }
+
+  const canSubmit = captchaToken && form.name && form.email && form.message
 
   return (
     <section className="ctc-section" id="contact">
@@ -69,12 +101,12 @@ export default function Contact() {
 
       {/* Right: form */}
       <div className="ctc-right">
-        {sent ? (
+        {status === 'sent' ? (
           <div className="ctc-success">
             <span className="ctc-success-icon">✓</span>
             <h3>Message Sent!</h3>
             <p>We'll be in touch within one business day.</p>
-            <button className="ctc-reset" onClick={() => { setSent(false); setForm({ name:'', email:'', phone:'', message:'' }) }}>
+            <button className="ctc-reset" onClick={() => setStatus('idle')}>
               Send Another
             </button>
           </div>
@@ -86,23 +118,35 @@ export default function Contact() {
                 <input id="name" name="name" type="text" placeholder="John Smith" value={form.name} onChange={handle} required />
               </div>
               <div className="ctc-field">
-                <label htmlFor="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" value={form.phone} onChange={handle} />
+                <label htmlFor="email">Email Address</label>
+                <input id="email" name="email" type="email" placeholder="you@company.com" value={form.email} onChange={handle} required />
               </div>
-            </div>
-            <div className="ctc-field">
-              <label htmlFor="email">Email Address</label>
-              <input id="email" name="email" type="email" placeholder="you@company.com" value={form.email} onChange={handle} required />
             </div>
             <div className="ctc-field">
               <label htmlFor="message">Project Details</label>
               <textarea id="message" name="message" rows={5} placeholder="Describe your project, materials needed, timeline…" value={form.message} onChange={handle} required />
             </div>
-            <button type="submit" className="ctc-submit">
-              Send Message
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-              </svg>
+
+            <div className="ctc-captcha">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={RECAPTCHA_KEY}
+                onChange={token => setCaptchaToken(token)}
+                onExpired={() => setCaptchaToken(null)}
+              />
+            </div>
+
+            {status === 'error' && (
+              <p className="ctc-error">Something went wrong. Please try again.</p>
+            )}
+
+            <button type="submit" className="ctc-submit" disabled={!canSubmit || status === 'sending'}>
+              {status === 'sending' ? 'Sending…' : 'Send Message'}
+              {status !== 'sending' && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+              )}
             </button>
           </form>
         )}
