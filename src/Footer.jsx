@@ -82,13 +82,9 @@ export default function Footer() {
         
         <span className="footer-managed">
   Managed by{" "}
-  <a
-    href="https://www.yatharthsocial.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+  
     <strong>Yatharth</strong>
-  </a>
+  
 </span>
 
 
