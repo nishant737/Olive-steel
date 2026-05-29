@@ -80,7 +80,18 @@ export default function Footer() {
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Olive Steel. All rights reserved.</span>
         
-        <span className="footer-managed">Managed by <strong>Yatharth</strong></span>
+        <span className="footer-managed">
+  Managed by{" "}
+  <a
+    href="https://www.yatharthsocial.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <strong>Yatharth</strong>
+  </a>
+</span>
+
+
         <span>Crafted with precision.</span>
       </div>
 
