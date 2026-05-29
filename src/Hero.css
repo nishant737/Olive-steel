@@ -423,7 +423,8 @@
 }
 
 .mob-menu__logo {
-  height: 56px;
+  width: 160px;
+  height: auto;
   object-fit: contain;
   filter: none;
 }

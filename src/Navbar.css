@@ -132,7 +132,8 @@
 }
 
 .sn-drawer__logo {
-  height: 56px;
+  width: 160px;
+  height: auto;
   object-fit: contain;
 }
 
