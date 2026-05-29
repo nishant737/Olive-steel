@@ -172,6 +172,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px 24px;
+  border: 1.5px solid #6b8c3e;
+  border-radius: 18px;
+  padding: 24px 20px;
+  background: rgba(107, 140, 62, 0.04);
 }
 
 .about-stat {
