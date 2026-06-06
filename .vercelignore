@@ -1,0 +1,8 @@
+# Exclude source image files from Vercel deployment
+olive-fevicon.png
+
+# Exclude temporary/build artifacts
+node_modules
+dist-ssr
+.git
+*.log
