@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import './Clients.css'
 
 import nitteImg      from './assets/nitte-logo.jpeg'
@@ -58,11 +58,32 @@ const LOGOS = [
 const ROW_ONE = LOGOS.slice(0, 13)
 const ROW_TWO = LOGOS.slice(13)
 
-function MarqueeRow({ logos, direction }) {
+function MarqueeRow({ logos, direction, rowIndex }) {
+  const containerRef = useRef(null)
   const doubled = [...logos, ...logos]
+
+  const handleMouseEnter = () => {
+    if (containerRef.current) {
+      containerRef.current.style.animationPlayState = 'paused'
+    }
+  }
+
+  const handleMouseLeave = () => {
+    if (containerRef.current) {
+      containerRef.current.style.animationPlayState = 'running'
+    }
+  }
+
   return (
-    <div className="cli-marquee-track">
-      <div className={`cli-marquee-inner cli-marquee-inner--${direction}`}>
+    <div
+      className="cli-marquee-track"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div
+        ref={containerRef}
+        className={`cli-marquee-inner cli-marquee-inner--${direction}`}
+      >
         {doubled.map((logo, i) => (
           <div key={i} className="cli-logo-card" title={logo.name}>
             <img src={logo.img} alt={logo.name} loading="lazy" decoding="async" />
@@ -74,25 +95,6 @@ function MarqueeRow({ logos, direction }) {
 }
 
 export default function Clients() {
-  const gridRef = useRef(null)
-
-  useEffect(() => {
-    const grid = gridRef.current
-    if (!grid) return
-    grid.classList.add('cli-grid--ready')
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          grid.classList.add('cli-grid--in')
-          obs.disconnect()
-        }
-      },
-      { threshold: 0.1 }
-    )
-    obs.observe(grid)
-    return () => obs.disconnect()
-  }, [])
-
   return (
     <section className="cli-section" id="clients" data-nav-dark>
       <div className="cli-inner">
@@ -110,24 +112,10 @@ export default function Clients() {
           </p>
         </div>
 
-        {/* Desktop: bordered grid */}
-        <div className="cli-grid" ref={gridRef}>
-          {LOGOS.map((logo, i) => (
-            <div
-              className="cli-cell"
-              key={i}
-              title={logo.name}
-              style={{ animationDelay: `${i * 0.04}s` }}
-            >
-              <img src={logo.img} alt={logo.name} loading="lazy" decoding="async" />
-            </div>
-          ))}
-        </div>
-
-        {/* Mobile: marquee rows */}
+        {/* Marquee rows: row 1 scrolls left, row 2 scrolls right */}
         <div className="cli-marquee-wrap">
-          <MarqueeRow logos={ROW_ONE} direction="left" />
-          <MarqueeRow logos={ROW_TWO} direction="right" />
+          <MarqueeRow logos={ROW_ONE} direction="left" rowIndex={1} />
+          <MarqueeRow logos={ROW_TWO} direction="right" rowIndex={2} />
         </div>
 
       </div>
