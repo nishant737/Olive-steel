@@ -97,6 +97,19 @@ function MarqueeRow({ logos, direction, rowIndex }) {
 export default function Clients() {
   return (
     <section className="cli-section" id="clients" data-nav-dark>
+      {/* 🔴 TEST ELEMENT - VERIFY DEPLOYMENT */}
+      <div style={{
+        backgroundColor: '#ff0000',
+        color: '#fff',
+        padding: '20px',
+        textAlign: 'center',
+        fontSize: '32px',
+        fontWeight: 'bold',
+        marginBottom: '20px',
+        borderBottom: '4px solid #cc0000'
+      }}>
+        🔴 TEST JUNE 9 - VERCEL DEPLOYMENT TEST 🔴
+      </div>
       <div className="cli-inner">
 
         <div className="cli-header">
