@@ -58,7 +58,7 @@ function SplashScreen({ onDone }) {
   return (
     <div className={`splash-overlay ${fading ? 'splash-fade-out' : ''}`}>
       <div className="splash-content">
-        <img src={splashLogo} alt="Olive Steel" className="splash-logo" width="200" height="120" loading="eager" />
+        <img src={splashLogo} alt="Olivesteel" className="splash-logo" width="200" height="120" loading="eager" />
         <SegmentedRing />
       </div>
     </div>

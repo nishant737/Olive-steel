@@ -57,7 +57,7 @@ export default function About() {
       <div className="about-header">
         <div className={`about-badge${visible ? ' about-badge--in' : ''}`}>
           <span className="about-badge-dot" />
-          Welcome to Olive Steel
+          Welcome to Olivesteel
         </div>
         <h2 className="about-heading">
           {['Crafting Steel', 'Into'].map((line, i) => (

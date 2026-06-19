@@ -19,7 +19,7 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="footer-brand">
-          <img src={logo} alt="Olive Steel" className="footer-logo" width="260" height="180" loading="lazy" />
+          <img src={logo} alt="Olivesteel" className="footer-logo" width="260" height="180" loading="lazy" />
           <p className="footer-tagline">
             Precision-engineered stainless steel solutions built to outlast the industry standard.
           </p>
@@ -71,14 +71,14 @@ export default function Footer() {
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Olive Steel Location"
+            title="Olivesteel Location"
           />
         </div>
 
       </div>
 
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} Olive Steel. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} Olivesteel. All rights reserved.</span>
         
         <span className="footer-managed">
   Managed by{" "}

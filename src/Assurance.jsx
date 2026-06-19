@@ -48,7 +48,7 @@ export default function Assurance() {
             Our Promise
           </div>
           <h2 className="asr-heading">
-            At <em>Olive</em> You Are<br />Assured Of
+            At <em>Olivesteel</em> You Are<br />Assured Of
           </h2>
           <p className="asr-sub">
             Six pillars that define every project we deliver.
