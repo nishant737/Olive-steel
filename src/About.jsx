@@ -90,7 +90,7 @@ export default function About() {
       {/* ── Description + stats — order 3 on mobile ── */}
       <div className="about-content">
         <p className={`about-desc${visible ? ' about-desc--in' : ''}`}>
-         We are a leading provider of stainless-steel solutions in coastal Karnataka. In the last 11  years, we have been cafering to the custom made stainless steel requirements of reputed enterprises of two key industries of our region namely hospitality and hospitals. Situated in the heart of Mangaluru's Industrial estate, our state-of-the-art operations and commitment to process improvements and customer satisfaction have made us one among the top sought commercial kitchen and hospital equipment suppliers in the region.
+         We are a leading provider of stainless-steel solutions in coastal Karnataka. In the last 11 years, we have been catering to the custom made stainless steel requirements of reputed enterprises of two key industries of our region namely hospitality and hospitals. Situated in the heart of Mangaluru's Industrial estate, our state-of-the-art operations and commitment to process improvements and customer satisfaction have made us one among the top sought commercial kitchen and hospital equipment suppliers in the region.
         </p>
 
         <div className="about-stats">

@@ -59,6 +59,10 @@ export default function Contact() {
           Have a project in mind? Fill out the form and our team will get back
           to you within one business day with a detailed quote.
         </p>
+        <p className="ctc-privacy-notice">
+          Your information is protected. We use industry-standard encryption and only process your data to respond to your inquiry.
+          <a href="#/privacy-policy"> Read our Privacy Policy</a> to learn more about how we handle your data.
+        </p>
 
         <div className="ctc-details">
           <a href="tel:+917353374444" className="ctc-detail-item">

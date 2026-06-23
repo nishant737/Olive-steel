@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import './App.css'
 import './typography.css'
 import SplashScreen from './SplashScreen'
@@ -14,27 +14,52 @@ import FAQ from './FAQ'
 import Assurance from './Assurance'
 import Contact from './Contact'
 import Footer from './Footer'
+import PrivacyPolicy from './PrivacyPolicy'
+import TermsOfService from './TermsOfService'
 
 function App() {
   const [showSplash, setShowSplash] = useState(true)
   const [heroReady, setHeroReady] = useState(false)
+  const [currentPage, setCurrentPage] = useState('home')
+
   const handleSplashDone = useCallback(() => setShowSplash(false), [])
   const handleHeroReady  = useCallback(() => setHeroReady(true), [])
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1)
+      if (hash === '/privacy-policy') setCurrentPage('privacy')
+      else if (hash === '/terms-of-service') setCurrentPage('terms')
+      else setCurrentPage('home')
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    handleHashChange()
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  const isLegalPage = currentPage === 'privacy' || currentPage === 'terms'
 
   return (
     <>
       <Cursor />
-      {showSplash && <SplashScreen onDone={handleSplashDone} />}
+      {!isLegalPage && showSplash && <SplashScreen onDone={handleSplashDone} />}
       <Navbar />
-      <Hero onReady={handleHeroReady} />
-      <About />
-      <Services />
-      <Projects />
-      <Clients />
-      <HowWeWork />
-      <FAQ />
-      <Assurance />
-      <Contact />
+      {currentPage === 'privacy' && <PrivacyPolicy />}
+      {currentPage === 'terms' && <TermsOfService />}
+      {currentPage === 'home' && (
+        <>
+          <Hero onReady={handleHeroReady} />
+          <About />
+          <Services />
+          <Projects />
+          <Clients />
+          <HowWeWork />
+          <FAQ />
+          <Assurance />
+          <Contact />
+        </>
+      )}
       <Footer />
 
       {/* WhatsApp floating button — shown only after hero animation */}

@@ -60,6 +60,15 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* Legal */}
+        <div className="footer-col">
+          <h4 className="footer-col-title">Legal</h4>
+          <ul className="footer-links">
+            <li><a href="#/privacy-policy">Privacy Policy</a></li>
+            <li><a href="#/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+
         {/* Map */}
         <div className="footer-col footer-map-col">
           <h4 className="footer-col-title">Find Us</h4>
