@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import './LegalPages.css'
+import { ObfuscatedEmail, ObfuscatedPhoneText } from './components/ObfuscatedContact'
 
 export default function PrivacyPolicy() {
   useEffect(() => {
@@ -94,7 +95,7 @@ export default function PrivacyPolicy() {
           </ul>
 
           <p>
-            To exercise these rights, please contact us at <a href="mailto:support@olivesteel.com">support@olivesteel.com</a> with your request and proof of identity. We will respond within 30 days (or as required by applicable law).
+            To exercise these rights, please contact us at <ObfuscatedEmail /> with your request and proof of identity. We will respond within 30 days (or as required by applicable law).
           </p>
 
           <h2>7. Data Security</h2>
@@ -144,8 +145,8 @@ export default function PrivacyPolicy() {
             If you have questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us:
           </p>
           <ul>
-            <li><strong>Email:</strong> <a href="mailto:support@olivesteel.com">support@olivesteel.com</a></li>
-            <li><strong>Phone:</strong> <a href="tel:+917353374444">+91 7353 374 444</a></li>
+            <li><strong>Email:</strong> <ObfuscatedEmail /></li>
+            <li><strong>Phone:</strong> <ObfuscatedPhoneText /></li>
             <li><strong>Address:</strong> L.24, Industrial Estate, Yeyyadi, Mangaluru, Karnataka 575008, India</li>
           </ul>
 

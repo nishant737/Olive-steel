@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import './LegalPages.css'
+import { ObfuscatedEmail, ObfuscatedPhoneText } from './components/ObfuscatedContact'
 
 export default function TermsOfService() {
   useEffect(() => {
@@ -182,8 +183,8 @@ export default function TermsOfService() {
             If you have questions about these Terms of Service, please contact us:
           </p>
           <ul>
-            <li><strong>Email:</strong> <a href="mailto:support@olivesteel.com">support@olivesteel.com</a></li>
-            <li><strong>Phone:</strong> <a href="tel:+917353374444">+91 7353 374 444</a></li>
+            <li><strong>Email:</strong> <ObfuscatedEmail /></li>
+            <li><strong>Phone:</strong> <ObfuscatedPhoneText /></li>
             <li><strong>Address:</strong> L.24, Industrial Estate, Yeyyadi, Mangaluru, Karnataka 575008, India</li>
           </ul>
 
