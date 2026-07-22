@@ -136,7 +136,7 @@ export default function Contact() {
               <textarea id="message" name="message" rows={5} placeholder="Describe your project, materials needed, timeline…" value={form.message} onChange={handle} required />
             </div>
 
-            {RECAPTCHA_KEY && (
+            {RECAPTCHA_KEY ? (
               <div className="ctc-captcha">
                 <ReCAPTCHA
                   ref={recaptchaRef}
@@ -145,6 +145,10 @@ export default function Contact() {
                   onExpired={() => setCaptchaToken(null)}
                 />
               </div>
+            ) : (
+              <p style={{ fontSize: '0.8rem', color: '#999', margin: '8px 0' }}>
+                ⚠️ reCAPTCHA not configured (VITE_RECAPTCHA_SITE_KEY missing)
+              </p>
             )}
 
             {status === 'error' && (
