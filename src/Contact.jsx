@@ -38,6 +38,11 @@ export default function Contact() {
       setForm(EMPTY)
       setCaptchaToken(null)
       recaptchaRef.current?.reset()
+
+      // Fire Google Ads conversion event on successful submission
+      window.gtag && window.gtag('event', 'conversion', {
+        'send_to': 'AW-936893165/PASTE_CONVERSION_LABEL_HERE'
+      })
     } catch {
       setStatus('error')
     }
