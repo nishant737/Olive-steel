@@ -1,5 +1,6 @@
 export const LABELS = {
-  contactForm: 'DZbzCLze1NOcEO21374D'
+  contactForm: 'DZbzCLze1NOcEO21374D',
+  whatsappClick: 'xJC9CPf8jtUcEO21374D'
 }
 
 export function trackConversion(label, options = {}) {
