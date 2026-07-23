@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import ReCAPTCHA from 'react-google-recaptcha'
+import { trackConversion, LABELS } from '../utils/gtag'
 import './Contact.css'
 
 const SERVICE_ID   = import.meta.env.VITE_EMAILJS_SERVICE_ID
@@ -34,15 +35,11 @@ export default function Contact() {
         },
         PUBLIC_KEY
       )
+      trackConversion(LABELS.contactForm)
       setStatus('sent')
       setForm(EMPTY)
       setCaptchaToken(null)
       recaptchaRef.current?.reset()
-
-      // Fire Google Ads conversion event on successful submission
-      window.gtag && window.gtag('event', 'conversion', {
-        'send_to': 'AW-936893165/PASTE_CONVERSION_LABEL_HERE'
-      })
     } catch {
       setStatus('error')
     }
