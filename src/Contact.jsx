@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import ReCAPTCHA from 'react-google-recaptcha'
-import { trackConversion, LABELS } from '../utils/gtag'
+import { trackConversion, LABELS } from './utils/gtag'
 import './Contact.css'
 
 const SERVICE_ID   = import.meta.env.VITE_EMAILJS_SERVICE_ID
