@@ -1,4 +1,5 @@
 import logo from './assets/whitelogo.png'
+import { trackConversion, LABELS } from './utils/gtag'
 import './Footer.css'
 
 const NAV = [
@@ -82,6 +83,17 @@ export default function Footer() {
             referrerPolicy="no-referrer-when-downgrade"
             title="Olivesteel Location"
           />
+          <a
+            href="https://maps.app.goo.gl/3JB5pHHooRk1HPYT8"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackConversion(LABELS.mapClick)}
+            style={{ display: 'inline-block', marginTop: '10px', fontSize: '0.9rem', color: '#6b8c3e', textDecoration: 'none', border: '1px solid #6b8c3e', borderRadius: '6px', padding: '6px 12px', transition: 'all 0.2s' }}
+            onMouseEnter={e => { e.target.style.background = '#6b8c3e'; e.target.style.color = '#fff' }}
+            onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = '#6b8c3e' }}
+          >
+            ↗ Get Directions
+          </a>
         </div>
 
       </div>
