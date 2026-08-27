@@ -167,12 +167,22 @@ const HOSPITAL = [
 ]
 
 const TABS = [
-  { key: 'kitchen',  label: 'Kitchen Equipments',  data: KITCHEN  },
-  { key: 'hospital', label: 'Hospital Equipments',  data: HOSPITAL },
+  { key: 'kitchen',  label: 'Kitchen Equipments',  data: KITCHEN,  hash: '#projects/kitchen'            },
+  { key: 'hospital', label: 'Hospital Equipments',  data: HOSPITAL, hash: '#projects/hospitalequipments' },
 ]
 
+const DEFAULT_TAB = 'kitchen'
+
+// Map a URL hash (e.g. "#projects/kitchen") to a tab key, or null if it isn't a tab hash.
+function tabKeyFromHash(hash) {
+  const match = TABS.find(t => t.hash === hash)
+  return match ? match.key : null
+}
+
 export default function Projects() {
-  const [tab, setTab]           = useState('kitchen')
+  const [tab, setTab]           = useState(
+    () => (typeof window !== 'undefined' && tabKeyFromHash(window.location.hash)) || DEFAULT_TAB
+  )
   const [active, setActive]     = useState(0)
   const [animating, setAnimating] = useState(false)
   const timerRef   = useRef(null)
@@ -204,14 +214,38 @@ export default function Projects() {
     return () => clearInterval(timerRef.current)
   }, [startTimer])
 
-  // Reset carousel when tab changes
-  function handleTab(key) {
+  // Reset carousel when tab changes. `syncHash` is skipped when the change
+  // originated from the URL itself (initial load / back-forward navigation).
+  const switchTab = useCallback((key, { syncHash = true } = {}) => {
     if (key === tab) return
     clearInterval(timerRef.current)
     setAnimating(false)
     setActive(0)
     setTab(key)
+
+    if (syncHash) {
+      const target = TABS.find(t => t.key === key)
+      // Update the URL hash in place — no new history entry, no page reload.
+      if (target && window.location.hash !== target.hash) {
+        window.history.replaceState(null, '', target.hash)
+      }
+    }
+  }, [tab])
+
+  function handleTab(key) {
+    switchTab(key)
   }
+
+  // Keep the active tab in sync when the hash changes (manual edit, back/forward,
+  // or opening a deep link in an already-loaded page).
+  useEffect(() => {
+    function handleHashChange() {
+      const key = tabKeyFromHash(window.location.hash)
+      if (key) switchTab(key, { syncHash: false })
+    }
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [switchTab])
 
   function handleKeyDown(e) {
     if (e.key === 'ArrowRight') { pausedRef.current = false; goTo(active + 1) }
