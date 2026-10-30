@@ -11,7 +11,7 @@ const HEADINGS = [
   ['Quality.', 'Delivered on Time'],
 ]
 
-function Hero({ onReady }) {
+function Hero() {
   const [menuOpen,      setMenuOpen]      = useState(false)
   const [headIdx,       setHeadIdx]       = useState(0)
   const [phase,         setPhase]         = useState('in')
@@ -50,10 +50,7 @@ function Hero({ onReady }) {
   function revealContent() {
     setNavVisible(true)
     setVideoEnded(true)
-    setTimeout(() => {
-      setContentReady(true)
-      onReady?.()
-    }, 200)
+    setTimeout(() => setContentReady(true), 200)
   }
 
   // Heading cycle — only after content is visible
